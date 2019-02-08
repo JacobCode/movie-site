@@ -1,0 +1,109 @@
+@import './variables';
+
+#carousel {
+    min-height: 91vh;
+    h1 {
+        font-family: $default;
+        font-weight: 400;
+        padding: 1.5rem;
+        font-size: 1.5rem;
+    }
+    .Carousel-root-92 {
+        min-height: 81vh;
+        max-width: none;
+        .react-swipeable-view-container {
+            .sliding-content {
+                min-height: 74vh;
+                display: flex;
+                align-items: center;
+                padding: 1.5rem;
+                .image-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 3rem;
+                    .bg {
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        height: 475px;
+                        width: 325px;
+                        filter: blur(10px);
+                        -webkit-filter: blur(10px);
+                        border-radius: 1rem;
+                    }
+                    .img {
+                        height: 100%;
+                        min-width: 275px;
+                        min-height: 425px;
+                        max-height: 450px;
+                        max-width: 300px;
+                        border-radius: 1rem;
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        z-index: 50;
+                    }
+                }
+                .text {
+                    max-width: 800px;
+                    padding: 1.5rem;
+                    font-family: $default;
+                    h1 {
+                        padding: 0;
+                        margin-bottom: 1rem;
+                        font-size: 1.8rem;
+                        display: flex;
+                        align-items: center;
+                        span {
+                            background: $darkGrey;
+                            color: white;
+                            min-width: 75px;
+                            text-align: center;
+                            font-size: 0.825rem;
+                            border-radius: 0.5rem;
+                            padding: 0.5rem 1rem;
+                            margin-left: 1rem;
+                        }
+                    }
+                    div.info {
+                        margin-bottom: 1rem;
+                        display: flex;
+                        align-items: center;
+                        span.date {
+                            margin-right: 0.5rem;
+                        }
+                        span.rating {
+                            display: flex;
+                            align-items: center;
+                            margin-left: 0.5rem;
+                            img {
+                                margin-left: 0.25rem;
+                            }
+                        }
+                    }
+                    p.plot {
+                        font-size: 1.2rem;
+                        line-height: 1.4;
+                        margin-bottom: 2rem;
+                    }
+                    .genres {
+                        margin-bottom: 2rem;
+                        .genre {
+                            margin-right: 1rem;
+                            span {
+                                
+                            }
+                        }
+                    }
+                    button {
+                        span {
+                            text-transform: capitalize;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+THE MOVIE DB API INFO
+
+API_KEY = api_key=b74e9e633dbb1ff6742cdbedaa08687d
+
+DISCOVER MOVIES IN THEATRES BY DATE
+
+https://api.themoviedb.org/3/discover/movie?api_key=b74e9e633dbb1ff6742cdbedaa08687d&primary_release_date.gte=2019-02-07&primary_release_date.lte=2019-02-14
+
+SINGLE MOVIE BY ID
+
+https://api.themoviedb.org/3/movie/532671?api_key=b74e9e633dbb1ff6742cdbedaa08687d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+API_KEY = 5d02e9db
+
+Api Search By Id (Individual Movie)
+    - http://www.omdbapi.com/?i=tt3896198&apikey=5d02e9db
+
+Api Search By Query (Multiple Movies)
+    - http://www.omdbapi.com/?s=gatsby&type=movie&page=1&apikey=5d02e9db
+
+
+http://www.omdbapi.com/?apikey=5d02e9db&
+
+
+Seperate string of genres in individual genres
+
+var str = "Action, Adventure, Comedy, Sci-Fi";
+var arr = [];
+arr.push(str);
+arr.join().replace(/\s/g, '').split(',');
+arr.forEach((genre) => {
+	console.log(genre);
+});
