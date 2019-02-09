@@ -2,6 +2,7 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const NEW_POST = 'NEW_POST';
 
 // MOVIES
+export const SEARCH_MOVIES = 'SEARCH_MOVIES'
 export const UPCOMING_MOVIES = 'UPCOMING_MOVIES';
 export const POPULAR_MOVIES = 'POPULAR_MOVIES';
 export const R_MOVIES = 'R_MOVIES';

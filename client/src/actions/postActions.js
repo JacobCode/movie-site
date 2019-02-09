@@ -1,4 +1,36 @@
-import { FETCH_POSTS, NEW_POST, UPCOMING_MOVIES, POPULAR_MOVIES, R_MOVIES, GET_MOVIE, GET_VIDEOS, GENRES, GET_IMDB, ACTOR_IMAGES, GET_ACTORS, TOGGLE_MOVIE } from './types';
+import {
+  SEARCH_MOVIES,
+  FETCH_POSTS,
+  NEW_POST,
+  UPCOMING_MOVIES,
+  POPULAR_MOVIES,
+  R_MOVIES,
+  GET_MOVIE,
+  GET_VIDEOS,
+  GENRES,
+  GET_IMDB,
+  ACTOR_IMAGES,
+  GET_ACTORS,
+  TOGGLE_MOVIE
+} from './types';
+
+const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
+const API_URL = 'https://api.themoviedb.org/3';
+
+export const searchMovies = (query) => dispatch => {
+  const querySearch = String(query).replace(/\s/g, '%20');
+  fetch(`${API_URL}/search/movie?${API_KEY}&language=en-US&query=${querySearch}&page=1&include_adult=false`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((response) => {
+      console.log(response.results);
+      dispatch({
+        type: SEARCH_MOVIES,
+        payload: response.results
+      })
+    })
+}
 
 export const fetchPosts = () => dispatch => {
   fetch('https://jsonplaceholder.typicode.com/posts')

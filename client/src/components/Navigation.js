@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,6 +13,8 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+
+import { searchMovies } from '../actions/postActions';
 
 // SCSS
 import '../scss/Navigation.scss';
@@ -48,8 +51,11 @@ class Navigation extends Component {
     }
     handleSearch(e) {
         e.preventDefault();
-        console.log(this.state.searchInputValue);
         // SEARCH_MOVIES ACTION
+        this.props.searchMovies(this.state.searchInputValue);
+        setTimeout(() => {
+            window.location.href = `${process.env.PUBLIC_URL}/searchmovies`;
+        }, 10000)
     }
     render() {
         const { classes } = this.props;
@@ -66,8 +72,8 @@ class Navigation extends Component {
                     <ListItem button component="a" href="/discover">
                             <ListItemText primary="Discover Movies" />
                     </ListItem>
-                    <ListItem button component="a" href="/tvshows">
-                            <ListItemText primary="TV Shows" />
+                    <ListItem button component="a" href="/searchmovies">
+                            <ListItemText primary="Search Movies" />
                     </ListItem>
                     <ListItem button component="a" href="/genres">
                             <ListItemText primary="Genres" />
@@ -91,7 +97,7 @@ class Navigation extends Component {
                             <MenuIcon />
                         </IconButton>
                         {/* Right Menu Search */}
-                        <form onSubmit={this.handleSearch} className="search">
+                        <form action="/login" onSubmit={this.handleSearch} className="search">
                             <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" />
                             <SearchIcon onClick={this.handleSearch} />
                         </form>
@@ -114,6 +120,12 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
     classes: PropTypes.object.isRequired,
+    searchMovies: PropTypes.func.isRequired,
+    searchOutput: PropTypes.array
 };
 
-export default withStyles(styles)(Navigation);
+const mapStateToProps = state => ({
+    searchOutput: state.movies.searchOutput
+})
+
+export default connect(mapStateToProps, { searchMovies })(withStyles(styles)(Navigation));

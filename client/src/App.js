@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+// Layout
+import Navigation from './components/Navigation';
+
 // Components
-import Home from './containers/Home';
+import Discover from './containers/Discover';
 import Login from './containers/Login';
 import Page from './containers/Page';
+import SearchMovies from './containers/SearchMovies';
 import MovieInfo from './components/MovieInfo';
 
 // Store
@@ -35,10 +39,12 @@ class App extends Component {
         <BrowserRouter>
           <MuiThemeProvider theme={theme}>
             <div className="App">
+              <Navigation />
               <Switch>
-                <Route path={process.env.PUBLIC_URL + '/'} component={Home} exact />
-                <Route path={process.env.PUBLIC_URL + '/page'} component={Page} exact />
+                <Route path={process.env.PUBLIC_URL + '/'} component={Page} exact />
+                <Route path={process.env.PUBLIC_URL + '/discover'} component={Discover} exact />
                 <Route path={process.env.PUBLIC_URL + '/login'} component={Login} exact />
+                <Route path={process.env.PUBLIC_URL + '/searchmovies'} component={SearchMovies} exact />
               </Switch>
               <MovieInfo />
             </div>

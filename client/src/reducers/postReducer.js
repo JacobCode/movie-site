@@ -1,4 +1,5 @@
 import {
+  SEARCH_MOVIES,
   UPCOMING_MOVIES,
   POPULAR_MOVIES,
   R_MOVIES,
@@ -12,6 +13,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
+  searchOutput: [],
   moviesInTheatres: [],
   upcomingMovies: [],
   popularMovies: [],
@@ -76,6 +78,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isToggled: action.payload
+      }
+    case SEARCH_MOVIES:
+      return {
+        ...state,
+        searchOutput: action.payload
       }
     default:
       return state;

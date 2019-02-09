@@ -6,10 +6,25 @@ body {
 }
 
 #snackbar {
+    height: 300px;
+    width: 100vw;
+    bottom: 4.5rem;
+    div.trailer {
+        display: flex;
+        flex-direction: column;
+        button {
+            height: 50px;
+            width: 25px;
+            svg {
+
+            }
+        }
+    }
     iframe {
         // height: 100%;
         // width: 100%;
     }
+    
 }
 
 #dialog {
@@ -286,11 +301,9 @@ body {
 @media screen and (max-width: 480px) {
     #snackbar {
         justify-content: flex-start;
-        left: 2rem;
-        bottom: 2rem;
         iframe {
-            height: 250px;
-            width: 300px;
+            height: 300px;
+            width: 100vw;
         }
     }
     #dialog {

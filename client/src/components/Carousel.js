@@ -116,7 +116,6 @@ class Carousel extends Component {
                                 <div className="sliding-content" key={index}>
                                     {Math.abs(activeStep - index) <= 2 ? (
                                         <div className="image-container">
-                                            <div className="bg" style={{backgroundImage: `url('${POSTER_URL}/${step.backdrop_path}')`}}></div>
                                             <div className="img" style={{backgroundImage: `url('${POSTER_URL}/${step.poster_path}')`}}></div>
                                         </div>
                                     ) : null}
