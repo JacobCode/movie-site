@@ -38,27 +38,37 @@ class MovieInfo extends Component {
     state = {
         open: this.props.isToggled,
         actors: this.props.actors,
-        POSTER_URL: 'http://image.tmdb.org/t/p/w500'
+        POSTER_URL: 'http://image.tmdb.org/t/p/w500',
+        isLoading: false
     };
     getVideos = () => {
-        console.log('GET VIDEOS');
+        console.log(this.props.currentVideos);
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
+            setTimeout(() => {
+                this.setState({
+                    isLoading: false
+                })
+            }, 500)
             this.setState({
-                open: this.props.isToggled
+                open: this.props.isToggled,
+                isLoading: true
             });
         }
     }
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({ open: false, isLoading: false });
     };
     render() {
         const { classes, chosenMovie, actors } = this.props;
-        if (this.props.isToggled === true) {
-            console.log('OPEN')
-            console.log(this.props.currentImdbData);
-        }
+        const images = actors.map((actor) => {
+            return (
+                <div key={actor} className="image-container">
+                    <div style={{backgroundImage: `url('${this.state.POSTER_URL}${actor}')`}} className="actor-img"></div>
+                </div>
+            )
+        })
         return (
             <div id="movie-info">
                 <Dialog
@@ -75,6 +85,7 @@ class MovieInfo extends Component {
                                 <CloseIcon />
                             </IconButton>
                             <Typography component="a" href={chosenMovie.homepage} color="inherit" className={classes.flex}>
+                                {/* IMDB TITLE */}
                                 {this.props.currentImdbData.Title}
                             </Typography>
                         </Toolbar>
@@ -91,7 +102,7 @@ class MovieInfo extends Component {
                                 <Button onClick={this.getVideos} variant="contained" color="secondary">Watch Trailer</Button>
                             </div>
                             <div className="movie-info">
-                                <p className="runtime-date">{chosenMovie.runtime} min &bull; {String(chosenMovie.release_date).substr(0, 4)}</p>
+                                <p className="runtime-date"><span>{this.props.currentImdbData.Rated}</span> &bull; {chosenMovie.runtime} min</p>
                                 <p className="overview">{chosenMovie.overview}</p>
                                 <p className="tagline">- {chosenMovie.tagline}</p>
                                 <div className="info">
@@ -100,19 +111,20 @@ class MovieInfo extends Component {
                                 <div className="actors-container">
                                     <h1>Actors</h1>
                                     <div className="actors-list">
-                                        {Array(this.props.currentImdbData.Actors).join().split(',').map((actor) => {
-                                            return (
-                                                <div className="actor" key={actor}>
-                                                    {actors.forEach((actor) => {
-                                                        {/* console.log(actor); */}
-                                                        return (
-                                                            <div className="actor-img">qjhsdvqowhv1owhvbqowvhb</div>
-                                                        )
-                                                    })}
-                                                    <span>{actor}</span>
-                                                </div>
-                                            )
-                                        })}
+                                        <div className="actor">
+                                            <div className="images">
+                                                {images}
+                                            </div>
+                                            <div className="names">
+                                                {Array(this.props.currentImdbData.Actors).join().split(',').map((actor) => {
+                                                    return (
+                                                        <div className="name" key={actor}>
+                                                            <span>{actor}</span>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

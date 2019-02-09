@@ -10,7 +10,7 @@
             a {
                 text-decoration: none;
                 font-size: 1.4rem;
-                font-weight: 400;
+                font-weight: 300;
             }
         }
     }
@@ -58,8 +58,15 @@
                 top: 64%;
                 left: 315px;
                 p.runtime-date {
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 2rem;
                     color: $grey;
+                    span {
+                        color: white;
+                        background: $grey;
+                        padding: 0.5rem 1.5rem;
+                        border-radius: 0.5rem;
+                        font-size: 0.825rem;
+                    }
                 }
                 p.overview {
                     line-height: 1.6;
@@ -68,6 +75,7 @@
                 }
                 p.tagline {
                     font-style: italic;
+                    font-weight: 300;
                 }
                 .info {
                     margin-bottom: 4rem;
@@ -81,25 +89,43 @@
                     margin-bottom: 2rem;
                 }
                 .actors-list {
-                    display: flex;
                     .actor {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-direction: column;
                         margin-right: 4rem;
                         &:last-of-type {
                             margin: 0;
                         }
-                        .actor-img {
-                            height: 100px;
-                            width: 100px;
-                            background: black;
-                            border-radius: 50%;
-                            margin-bottom: 1rem;
+                        .images {
+                            display: grid;
+                            grid-template-columns: repeat(6, 1fr);
+                            grid-gap: 4rem;
+                            margin-bottom: 0.5rem;
+                            .image-container {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                cursor: pointer;
+                                .actor-img {
+                                    height: 100px;
+                                    width: 100px;
+                                    border-radius: 50%;
+                                    background-size: cover;
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                }
+                            }
                         }
-                        span {
-
+                        .names {
+                            display: grid;
+                            grid-template-columns: repeat(6, 1fr);
+                            grid-gap: 4rem;
+                            .name {
+                                text-align: center;
+                                width: 100px;
+                                span {
+                                    line-height: 1.4;
+                                    font-weight: 300;
+                                }
+                            }
                         }
                     }
                 }

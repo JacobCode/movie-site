@@ -73,12 +73,13 @@ class Carousel extends Component {
     viewMovie(e) {
         this.props.getMovie(e.target.dataset.id);
         this.props.getVideos(e.target.dataset.id)
-        if (this.props.chosenMovie.imdb_id !== undefined) {
+        setTimeout(() => {
             this.props.getImdbData(this.props.chosenMovie.imdb_id);
             this.props.toggleMovie(true);
-            // this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
-            console.log(this.props.currentImdbData)
-        }
+            setTimeout(() => {
+                this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
+            }, 100)
+        }, 500)
     }
     render() {
         const { classes, theme } = this.props;

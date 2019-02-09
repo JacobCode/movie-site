@@ -15,13 +15,13 @@ import store from './store';
 import './scss/App.scss';
 
 import { createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+import deepOrange from '@material-ui/core/colors/deepOrange';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: deepPurple,
+    primary: deepOrange,
+    secondary: blueGrey,
   },
   typography: {
     useNextVariants: true,
