@@ -1,7 +1,24 @@
 @import './variables';
 
+body {
+    // overflow-x: hidden !important;
+    // overflow-y: scroll !important;
+}
+
+#snackbar {
+    iframe {
+        // height: 100%;
+        // width: 100%;
+    }
+}
+
 #dialog {
-    overflow-y: auto;
+    max-height: none !important;
+    .MuiDialog-container-139.MuiDialog-scrollPaper-137 {
+        .MuiPaper-root-12.MuiPaper-elevation24-38.MuiPaper-rounded-13.MuiDialog-paper-140.MuiDialog-paperScrollPaper-141.MuiDialog-paperWidthSm-144.MuiDialog-paperFullScreen-149 {
+            max-height: none;
+        }
+    }
     #app-bar {
         #tool-bar {
             button {
@@ -27,14 +44,13 @@
 
     .main-content {
         height: 100%;
-        max-height: 200px;
-        position: absolute;
         width: 100%;
+        position: absolute;
         .content {
             position: absolute;
             min-height: 725px;
-            max-height: 725px;
-            top: 0;
+            // min-height: 100%;
+            max-height: none;
             width: 100%;
             .poster-container {
                 position: absolute;
@@ -55,8 +71,10 @@
             .movie-info {
                 margin-right: 2rem;
                 position: absolute;
+                min-width: 300px;
                 top: 64%;
                 left: 315px;
+                width: 85%;
                 p.runtime-date {
                     margin-bottom: 2rem;
                     color: $grey;
@@ -72,6 +90,7 @@
                     line-height: 1.6;
                     margin-bottom: 1rem;
                     font-size: 1.2rem;
+                    max-width: 85%;
                 }
                 p.tagline {
                     font-style: italic;
@@ -94,9 +113,11 @@
                         &:last-of-type {
                             margin: 0;
                         }
+                        cursor: default;
                         .images {
                             display: grid;
-                            grid-template-columns: repeat(6, 1fr);
+                            grid-template-columns: repeat(auto-fill, 100px);
+                            grid-auto-rows: 100px;
                             grid-gap: 4rem;
                             margin-bottom: 0.5rem;
                             .image-container {
@@ -107,6 +128,8 @@
                                 .actor-img {
                                     height: 100px;
                                     width: 100px;
+                                    min-width: 100px;
+                                    min-height: 100px;
                                     border-radius: 50%;
                                     background-size: cover;
                                     background-repeat: no-repeat;
@@ -116,11 +139,12 @@
                         }
                         .names {
                             display: grid;
-                            grid-template-columns: repeat(6, 1fr);
+                            grid-template-columns: repeat(auto-fill, 100px);
                             grid-gap: 4rem;
                             .name {
                                 text-align: center;
                                 width: 100px;
+                                min-width: 100px;
                                 span {
                                     line-height: 1.4;
                                     font-weight: 300;
@@ -137,45 +161,67 @@
 
 // Media Queries
 
-@media screen and (max-width: 1200px) {
-    #dialog {
-        #app-bar {
-            #tool-bar {
-                // background: red;
-            }
-        }
-
-        .cover {
-
-        }
-
-        .movie-content {
-            .content {
-                .poster {
-
-                }
-                .info {
-
-                }
-            }
-        }
-    }
-}
 @media screen and (max-width: 992px) {
     #dialog {
         #app-bar {
             #tool-bar {
-                background: mediumseagreen;
+                // background: mediumseagreen;
             }
         }
 
         .cover {}
 
-        .movie-content {
+        .main-content {
             .content {
-                .poster {}
+                .poster-container {
+                    position: absolute;
+                    top: 20%;
+                    left: 50%;
+                    transform:translateX(-50%);
+                }
 
-                .info {}
+                .movie-info {
+                    top: 72%;
+                    left: 0;
+                    margin: 0;
+                    padding: 0 2rem;
+                    width: 100%;
+                    p.runtime-date {
+                        
+                    }
+                    p.overview {
+                        min-width: 100%;
+                    }
+                    p.tagline {
+                        
+                    }
+                    .info {
+                        
+                    }
+                }
+
+                .actors-container {
+                    padding-bottom: 2rem;
+                    .actors-list {
+                        .actor {
+                            &:last-of-type {
+                                margin: 0;
+                            }
+                            .images {
+                                grid-auto-rows: 100px;
+                                grid-template-columns: repeat(auto-fill, 100px);
+                            }
+                            .names {
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, 100px);
+                                display: none; // HIDE NAMES FOR NOW
+                                grid-gap: 4rem;
+                                .name {
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -184,36 +230,118 @@
     #dialog {
         #app-bar {
             #tool-bar {
-                background: yellow;
+                // background: red;
             }
         }
 
         .cover {}
 
-        .movie-content {
+        .main-content {
             .content {
-                .poster {}
+                .poster-container {
+                    position: absolute;
+                    top: 20%;
+                    left: 50%;
+                    transform:translateX(-50%);
+                }
 
-                .info {}
+                .movie-info {
+                    top: 84%;
+                    left: 0;
+                    margin: 0;
+                    padding: 0 2rem;
+                    width: 100%;
+                    p.runtime-date {}
+
+                    p.overview {
+                        min-width: 100%;
+                    }
+
+                    p.tagline {}
+
+                    .info {}
+                }
+
+                .actors-container {
+                    padding-bottom: 2rem;
+
+                    .actors-list {
+                        .actor {
+
+                            .images {
+                                grid-auto-rows: 100px;
+                                grid-template-columns: repeat(auto-fill, 100px);
+                            }
+
+                            .names {
+                                .name {}
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 }
 @media screen and (max-width: 480px) {
+    #snackbar {
+        justify-content: flex-start;
+        left: 2rem;
+        bottom: 2rem;
+        iframe {
+            height: 250px;
+            width: 300px;
+        }
+    }
     #dialog {
         #app-bar {
             #tool-bar {
-                background: blue;
+                // background: blue;
             }
         }
 
         .cover {}
 
-        .movie-content {
+        .main-content {
             .content {
-                .poster {}
+                .poster-container {
+                    position: absolute;
+                    top: 20%;
+                }
 
-                .info {}
+                .movie-info {
+                    top: 84%;
+                    left: 0;
+                    margin: 0;
+                    padding: 0 2rem;
+                    width: 100%;
+                    p.runtime-date {}
+
+                    p.overview {
+                        min-width: 100%;
+                    }
+
+                    p.tagline {}
+
+                    .info {}
+                }
+
+                .actors-container {
+                    padding-bottom: 2rem;
+
+                    .actors-list {
+                        .actor {
+
+                            .images {
+                                grid-gap: 2rem;
+                            }
+
+                            .names {
+                                .name {}
+                            }
+                        }
+                    }
+                }
             }
         }
     }

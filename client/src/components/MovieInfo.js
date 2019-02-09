@@ -18,6 +18,9 @@ import Divider from '@material-ui/core/Divider';
 import { connect } from 'react-redux';
 import { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, getImages } from '../actions/postActions';
 
+// Components
+import EmbeddedVideo from './EmbeddedVideo';
+
 // SCSS
 import '../scss/MovieInfo.scss';
 
@@ -37,12 +40,15 @@ function Transition(props) {
 class MovieInfo extends Component {
     state = {
         open: this.props.isToggled,
-        actors: this.props.actors,
         POSTER_URL: 'http://image.tmdb.org/t/p/w500',
-        isLoading: false
+        isLoading: false,
+        snackbarOpen: false
     };
     getVideos = () => {
         console.log(this.props.currentVideos);
+        this.setState({
+            snackbarOpen: true
+        })
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
@@ -58,7 +64,7 @@ class MovieInfo extends Component {
         }
     }
     handleClose = () => {
-        this.setState({ open: false, isLoading: false });
+        this.setState({ open: false, isLoading: false, snackbarOpen: false });
     };
     render() {
         const { classes, chosenMovie, actors } = this.props;
@@ -132,7 +138,8 @@ class MovieInfo extends Component {
                     </div>
                     
                     <Divider variant="middle" />
-
+                    
+                    <EmbeddedVideo video={this.props.currentVideos[0]} open={this.state.snackbarOpen} />
                 </Dialog>
             </div>
         );

@@ -109,3 +109,150 @@
         }
     }
 }
+
+@media screen and (max-width: 992px) {
+    #carousel {
+        h1 {
+            
+        }
+        .Carousel-root-92 {
+            .react-swipeable-view-container {
+                .sliding-content {
+                    .image-container {
+                        .bg {
+                        }
+                        .img {
+                        }
+                    }
+                    .text {
+                        max-width: 800px;
+                        padding: 1.5rem;
+                        font-family: $default;
+                        h1 {
+                            span {
+                                
+                            }
+                        }
+                        div.info {
+                            
+                        }
+                        p.plot {
+                            
+                        }
+                        .genres {
+                            .genre {
+
+                            }
+                        }
+                        button {
+                            span {
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #carousel {
+        h1 {
+            
+        }
+        .Carousel-root-92 {
+            // Hide controller on small screens
+            .MuiPaper-root-12.MuiPaper-elevation0-14.MuiMobileStepper-root-100.MuiMobileStepper-positionStatic-103 {
+                display: none;
+            }
+            .react-swipeable-view-container {
+
+                .sliding-content {
+                    flex-direction: column;
+                    .image-container {
+                        margin: 0;
+                        .bg {
+                        }
+                        .img {
+                        }
+                    }
+                    .text {
+                        max-width: 800px;
+                        padding: 1.5rem;
+                        font-family: $default;
+                        h1 {
+                            span {
+                                
+                            }
+                        }
+                        div.info {
+                            
+                        }
+                        p.plot {
+                            
+                        }
+                        .genres {
+                            .genre {
+                                
+                            }
+                        }
+                        button {
+                            span {
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    #carousel {
+        h1 {
+            
+        }
+        .Carousel-root-92 {
+            .react-swipeable-view-container {
+                .sliding-content {
+                    .image-container {
+                        margin-bottom: 2rem;
+                        .bg {
+                        }
+                        .img {
+                        }
+                    }
+                    .text {
+                        max-width: 800px;
+                        padding: 0;
+                        font-family: $default;
+                        h1 {
+                            font-size: 1.5rem;
+                            span {
+                                
+                            }
+                        }
+                        div.info {
+                            
+                        }
+                        p.plot {
+                            
+                        }
+                        .genres {
+                            display: none;
+                            .genre {
+                                
+                            }
+                        }
+                        button {
+                            span {
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
