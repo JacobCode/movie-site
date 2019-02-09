@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Page from './containers/Page';
+import MovieInfo from './components/MovieInfo';
 
 // Store
 import store from './store';
@@ -35,10 +36,11 @@ class App extends Component {
           <MuiThemeProvider theme={theme}>
             <div className="App">
               <Switch>
-                <Route path={process.env.PUBLIC_URL + '/'} component={Page} exact />
-                <Route path={process.env.PUBLIC_URL + '/reduxdata'} component={Home} exact />
+                <Route path={process.env.PUBLIC_URL + '/'} component={Home} exact />
+                <Route path={process.env.PUBLIC_URL + '/page'} component={Page} exact />
                 <Route path={process.env.PUBLIC_URL + '/login'} component={Login} exact />
               </Switch>
+              <MovieInfo />
             </div>
           </MuiThemeProvider>
         </BrowserRouter>

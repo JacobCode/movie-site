@@ -1,0 +1,194 @@
+@import './variables';
+
+#dialog {
+    overflow-y: auto;
+    #app-bar {
+        #tool-bar {
+            button {
+                margin-right: 1rem;
+            }
+            a {
+                text-decoration: none;
+                font-size: 1.4rem;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .cover {
+        height: 100%;
+        min-height: 300px;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        max-height: 350px;
+    }
+
+    .main-content {
+        height: 100%;
+        max-height: 200px;
+        position: absolute;
+        width: 100%;
+        .content {
+            position: absolute;
+            min-height: 725px;
+            max-height: 725px;
+            top: 0;
+            width: 100%;
+            .poster-container {
+                position: absolute;
+                top: 25%;
+                left: 2rem;
+                .poster {
+                    height: 350px;
+                    width: 250px;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    margin-bottom: 1rem;
+                }
+                button {
+                    width: 250px;
+                }
+            }
+            .movie-info {
+                margin-right: 2rem;
+                position: absolute;
+                top: 64%;
+                left: 315px;
+                p.runtime-date {
+                    margin-bottom: 0.5rem;
+                    color: $grey;
+                }
+                p.overview {
+                    line-height: 1.6;
+                    margin-bottom: 1rem;
+                    font-size: 1.2rem;
+                }
+                p.tagline {
+                    font-style: italic;
+                }
+                .info {
+                    margin-bottom: 4rem;
+                }
+            }
+            .actors-container {
+                padding-bottom: 2rem;
+                h1 {
+                    font-size: 2rem;
+                    font-weight: 400;
+                    margin-bottom: 2rem;
+                }
+                .actors-list {
+                    display: flex;
+                    .actor {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        margin-right: 4rem;
+                        &:last-of-type {
+                            margin: 0;
+                        }
+                        .actor-img {
+                            height: 100px;
+                            width: 100px;
+                            background: black;
+                            border-radius: 50%;
+                            margin-bottom: 1rem;
+                        }
+                        span {
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+// Media Queries
+
+@media screen and (max-width: 1200px) {
+    #dialog {
+        #app-bar {
+            #tool-bar {
+                // background: red;
+            }
+        }
+
+        .cover {
+
+        }
+
+        .movie-content {
+            .content {
+                .poster {
+
+                }
+                .info {
+
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    #dialog {
+        #app-bar {
+            #tool-bar {
+                background: mediumseagreen;
+            }
+        }
+
+        .cover {}
+
+        .movie-content {
+            .content {
+                .poster {}
+
+                .info {}
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    #dialog {
+        #app-bar {
+            #tool-bar {
+                background: yellow;
+            }
+        }
+
+        .cover {}
+
+        .movie-content {
+            .content {
+                .poster {}
+
+                .info {}
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    #dialog {
+        #app-bar {
+            #tool-bar {
+                background: blue;
+            }
+        }
+
+        .cover {}
+
+        .movie-content {
+            .content {
+                .poster {}
+
+                .info {}
+            }
+        }
+    }
+}

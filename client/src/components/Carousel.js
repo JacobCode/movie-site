@@ -12,7 +12,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Chip from '@material-ui/core/Chip';
 import Divider from '@material-ui/core/Divider';
 
-import { getUpcomingMovies, getMovie, getGenres } from '../actions/postActions';
+import { getUpcomingMovies, getMovie, getVideos, getGenres, getImdbData, getActors, toggleMovie } from '../actions/postActions';
 
 // SCSS
 import '../scss/Carousel.scss';
@@ -47,7 +47,7 @@ class Carousel extends Component {
     constructor() {
         super();
         this.state = {
-            activeStep: 0,
+            activeStep: 0
         };
         this.viewMovie = this.viewMovie.bind(this);
     }
@@ -72,6 +72,13 @@ class Carousel extends Component {
     }
     viewMovie(e) {
         this.props.getMovie(e.target.dataset.id);
+        this.props.getVideos(e.target.dataset.id)
+        if (this.props.chosenMovie.imdb_id !== undefined) {
+            this.props.getImdbData(this.props.chosenMovie.imdb_id);
+            this.props.toggleMovie(true);
+            // this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
+            console.log(this.props.currentImdbData)
+        }
     }
     render() {
         const { classes, theme } = this.props;
@@ -120,8 +127,8 @@ class Carousel extends Component {
                                         <div className="genres">
                                             {btnElements}
                                         </div>
-                                        <Button data-id={step.id} onClick={this.viewMovie} variant="contained" color="secondary">
-                                            <span data-id={step.id}>View More</span>
+                                        <Button data-id={step.id} data-imdb_id={step.imdb_id} onClick={this.viewMovie} variant="contained" color="secondary">
+                                            <span data-id={step.id} data-imdb_id={step.imdb_id}>View More</span>
                                         </Button>
                                     </div>
                                 </div>
@@ -159,15 +166,22 @@ Carousel.propTypes = {
   theme: PropTypes.object,
   getUpcomingMovies: PropTypes.func.isRequired,
   getMovie: PropTypes.func.isRequired,
+  getVideos: PropTypes.func.isRequired,
   upcomingMovies: PropTypes.array.isRequired,
+  getImdbData: PropTypes.func.isRequired,
+  currentImdbData: PropTypes.object,
   chosenMovie: PropTypes.object.isRequired,
-  genres: PropTypes.array.isRequired
+  getActors: PropTypes.func.isRequired,
+  genres: PropTypes.array.isRequired,
+  toggleMovie: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
     upcomingMovies: state.movies.upcomingMovies,
     chosenMovie: state.movies.chosenMovie,
-    genres: state.movies.genres
+    currentImdbData: state.movies.currentImdbData,
+    genres: state.movies.genres,
+    actors: state.movies.actors
 })
 
-export default connect(mapStateToProps, { getUpcomingMovies, getMovie, getGenres })(withStyles(styles, { withTheme: true})(Carousel));
+export default connect(mapStateToProps, { getUpcomingMovies, getMovie, getVideos, getGenres, getImdbData, getActors, toggleMovie })(withStyles(styles, { withTheme: true})(Carousel));

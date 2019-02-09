@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST, UPCOMING_MOVIES, POPULAR_MOVIES, R_MOVIES, GET_MOVIE, GENRES } from './types';
+import { FETCH_POSTS, NEW_POST, UPCOMING_MOVIES, POPULAR_MOVIES, R_MOVIES, GET_MOVIE, GET_VIDEOS, GENRES, GET_IMDB, ACTOR_IMAGES, GET_ACTORS, TOGGLE_MOVIE } from './types';
 
 export const fetchPosts = () => dispatch => {
   fetch('https://jsonplaceholder.typicode.com/posts')
@@ -29,7 +29,6 @@ export const createPost = postData => dispatch => {
 };
 
 export const getUpcomingMovies = () => dispatch => {
-  console.log('%c GET UPCOMING MOVIES ', 'color: #a530ff');
   fetch('/movies/upcoming')
     .then((res) => {
       return res.json();
@@ -46,7 +45,6 @@ export const getUpcomingMovies = () => dispatch => {
 }
 
 export const getPopularMovies = () => dispatch => {
-  console.log('%c GET POPULAR MOVIES ', 'color: #a530ff');
   fetch('/movies/popular')
     .then((res) => {
       return res.json();
@@ -60,7 +58,6 @@ export const getPopularMovies = () => dispatch => {
 }
 
 export const getRMovies = () => dispatch => {
-  console.log('%c GET R MOVIES ', 'color: #a530ff');
   fetch('/movies/ratedr')
     .then((res) => {
       return res.json();
@@ -74,16 +71,27 @@ export const getRMovies = () => dispatch => {
 }
 
 export const getMovie = (id) => dispatch => {
-  console.log('%c GET MOVIE ', 'color: #a530ff');
   fetch(`/movie/${id}`)
     .then((res) => {
       return res.json();
     })
     .then((movie) => {
-      console.log(movie)
       dispatch({
         type: GET_MOVIE,
         payload: movie
+      })
+    })
+}
+
+export const getVideos = (id) => dispatch => {
+  fetch(`/movies/videos/${id}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((videos) => {
+      dispatch({
+        type: GET_VIDEOS,
+        payload: videos
       })
     })
 }
@@ -94,10 +102,59 @@ export const getGenres = () => dispatch => {
       return res.json();
     })
     .then((genres) => {
-      console.log(genres.genres)
       dispatch({
         type: GENRES,
-        payload: genres.genres
+        payload: genres
       })
     })
+}
+
+export const getImdbData = (imdb_id) => dispatch => {
+  fetch(`/imdb/${imdb_id}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((imdb_data) => {
+      dispatch({
+        type: GET_IMDB,
+        payload: imdb_data
+      })
+    })
+}
+
+export const getImages = (images) => dispatch => {
+  // console.log(images)
+  dispatch({
+    type: ACTOR_IMAGES,
+    payload: images
+  })
+}
+
+export const getActors = (actors) => dispatch => {
+  if (actors.length > 1 && actors !== undefined) {
+    const actor_url = 'http://api.themoviedb.org/3/search/person?';
+    const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
+    const actorImages = [];
+    actors.forEach((actor) => {
+      actor = actor.split(' ').join('+');
+      fetch(`${actor_url}${API_KEY}&query=${actor}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((actor) => {
+          actorImages.push(actor.results[0].profile_path)
+        })
+    })
+    dispatch({
+      type: GET_ACTORS,
+      payload: actorImages
+    })
+  }
+}
+
+export const toggleMovie = (bool) => dispatch => {
+  dispatch({
+    type: TOGGLE_MOVIE,
+    payload: bool
+  })
 }

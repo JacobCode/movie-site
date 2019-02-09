@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import SwipeableViews from 'react-swipeable-views';
 
 // SCSS
 import '../scss/MovieCategories.scss';
 
 import Divider from '@material-ui/core/Divider';
 
-import { getPopularMovies, getRMovies, getMovie } from '../actions/postActions';
+import { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie } from '../actions/postActions';
 
 class MovieCategories extends Component {
     constructor() {
         super();
-        this.getMovie = this.getMovie.bind(this);
+        this.selectMovie = this.selectMovie.bind(this);
     }
     componentWillMount() {
         this.props.getPopularMovies();
         this.props.getRMovies();
     }
-    getMovie(e) {
-        this.props.getMovie(e.target.dataset.id)
+    selectMovie(e) {
+        this.props.getMovie(e.target.dataset.id);
+        this.props.getVideos(e.target.dataset.id);
+        if (this.props.chosenMovie.imdb_id !== undefined) {
+            this.props.getImdbData(this.props.chosenMovie.imdb_id);
+            this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
+            this.props.toggleMovie(true);
+        } else {
+            console.log('CHOSEN SHOE UNDEFINED');
+        }
     }
     render() {
         const POSTER_URL = 'http://image.tmdb.org/t/p/w300';
@@ -37,7 +44,7 @@ class MovieCategories extends Component {
                                 return (
                                     <div className="slide" key={index}>
                                         <div className="movie">
-                                            <div data-id={movie.id} onClick={this.getMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
 
                                             </div>
                                             <div className="info">
@@ -63,7 +70,7 @@ class MovieCategories extends Component {
                                 return (
                                     <div className="slide" key={index}>
                                         <div className="movie">
-                                            <div data-id={movie.id} onClick={this.getMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
 
                                             </div>
                                             <div className="info">
@@ -87,13 +94,25 @@ MovieCategories.propTypes = {
     getPopularMovies: PropTypes.func.isRequired,
     getRMovies: PropTypes.func.isRequired,
     getMovie: PropTypes.func.isRequired,
+    getVideos: PropTypes.func.isRequired,
+    currentVideos: PropTypes.array.isRequired,
     popularMovies: PropTypes.array.isRequired,
+    getImdbData: PropTypes.func.isRequired,
+    currentImdbData: PropTypes.object.isRequired,
+    chosenMovie: PropTypes.object,
+    getActors: PropTypes.func.isRequired,
+    actors: PropTypes.array,
     rMovies: PropTypes.array.isRequired,
+    toggleMovie: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     popularMovies: state.movies.popularMovies,
-    rMovies: state.movies.rMovies
+    currentVideos: state.movies.currentVideos,
+    currentImdbData: state.movies.currentImdbData,
+    chosenMovie: state.movies.chosenMovie,
+    rMovies: state.movies.rMovies,
+    actors: state.movies.actors
 })
 
-export default connect(mapStateToProps, { getPopularMovies, getRMovies, getMovie })(MovieCategories);
+export default connect(mapStateToProps, { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie })(MovieCategories);

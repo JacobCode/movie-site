@@ -62,7 +62,6 @@ app.get('/movies/ratedr', (req, res) => {
 
 // Get Movie (individual movie)
 app.get('/movie/:id', (req, res) => {
-    console.log(`Search for ${req.params.id}`)
     axios.get(`${API_URL}/movie/${req.params.id}?${API_KEY}&language=en-US&page=1`)
         .then(function (response) {
             res.json(response.data);
@@ -72,10 +71,33 @@ app.get('/movie/:id', (req, res) => {
         })
 })
 
+// Videos
+app.get('/movies/videos/:id', (req, res) => {
+    axios.get(`${API_URL}/movie/${req.params.id}/videos?${API_KEY}&language=en-US`)
+        .then(function (response) {
+            res.json(response.data.results);
+        })
+        .catch(function(error) {
+            console.log(error);
+        })
+})
+
 // Genres
 app.get('/movies/genres', (req, res) => {
-    // https: //api.themoviedb.org/3/genre/movie/list?api_key=b74e9e633dbb1ff6742cdbedaa08687d
     axios.get(`${API_URL}/genre/movie/list?${API_KEY}`)
+        .then(function (response) {
+            res.json(response.data.genres);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+})
+
+// Imdb Data
+app.get('/imdb/:id', (req, res) => {
+    const imdb_key = 'apikey=5d02e9db';
+    const imdb_url = 'http://www.omdbapi.com';
+    axios.get(`${imdb_url}/?i=${req.params.id}&${imdb_key}`)
         .then(function (response) {
             res.json(response.data);
         })
