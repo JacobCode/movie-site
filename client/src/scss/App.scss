@@ -8,3 +8,11 @@ body {
 * {
     font-family: $default;
 }
+
+#closeNav {
+    display: flex;
+    align-items: center;
+    svg {
+        margin-left: 1rem;
+    }
+}

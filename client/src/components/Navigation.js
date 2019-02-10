@@ -13,6 +13,8 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+import CloseIcon from '@material-ui/icons/Close';
 
 import { searchMovies } from '../actions/postActions';
 
@@ -51,11 +53,7 @@ class Navigation extends Component {
     }
     handleSearch(e) {
         e.preventDefault();
-        // SEARCH_MOVIES ACTION
         this.props.searchMovies(this.state.searchInputValue);
-        setTimeout(() => {
-            window.location.href = `${process.env.PUBLIC_URL}/searchmovies`;
-        }, 10000)
     }
     render() {
         const { classes } = this.props;
@@ -75,14 +73,11 @@ class Navigation extends Component {
                     <ListItem button component="a" href="/searchmovies">
                             <ListItemText primary="Search Movies" />
                     </ListItem>
-                    <ListItem button component="a" href="/genres">
-                            <ListItemText primary="Genres" />
-                    </ListItem>
                 </List>
                 <Divider />
                 <List>
                     <ListItem button>
-                        <ListItemText primary="Close" />
+                        <ListItemText primary={<div id="closeNav">Close<CloseIcon /></div>} />
                     </ListItem>
                 </List>
             </div>
@@ -98,7 +93,7 @@ class Navigation extends Component {
                         </IconButton>
                         {/* Right Menu Search */}
                         <form action="/login" onSubmit={this.handleSearch} className="search">
-                            <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" />
+                            <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" required={true} />
                             <SearchIcon onClick={this.handleSearch} />
                         </form>
                     </Toolbar>
