@@ -13,7 +13,6 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { searchMovies } from '../actions/postActions';
@@ -53,7 +52,10 @@ class Navigation extends Component {
     }
     handleSearch(e) {
         e.preventDefault();
-        this.props.searchMovies(this.state.searchInputValue);
+        // Make sure user entered query
+        if (this.state.searchInputValue.length > 0) {
+            this.props.searchMovies(this.state.searchInputValue);
+        }
     }
     render() {
         const { classes } = this.props;
@@ -93,7 +95,7 @@ class Navigation extends Component {
                         </IconButton>
                         {/* Right Menu Search */}
                         <form action="/login" onSubmit={this.handleSearch} className="search">
-                            <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" required={true} />
+                            <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" required />
                             <SearchIcon onClick={this.handleSearch} />
                         </form>
                     </Toolbar>

@@ -24,7 +24,6 @@ export const searchMovies = (query) => dispatch => {
       return res.json();
     })
     .then((response) => {
-      console.log(response.results);
       dispatch({
         type: SEARCH_MOVIES,
         payload: response.results
@@ -155,7 +154,6 @@ export const getImdbData = (imdb_id) => dispatch => {
 }
 
 export const getImages = (images) => dispatch => {
-  // console.log(images)
   dispatch({
     type: ACTOR_IMAGES,
     payload: images

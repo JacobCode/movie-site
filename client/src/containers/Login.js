@@ -33,7 +33,7 @@ class Login extends Component {
             <div>
                 <Grid container>
                     <h1>Login | Sign Up</h1>
-                    <p>Login to view a wide variety of movies</p>
+                    <p>Login for additional features</p>
                     <form onSubmit={this.handleFormSubmit}>
                         <TextField onChange={this.handleEmailInput} required label="Email Address" />
                         <TextField onChange={this.handlePasswordInput} required label="Password" type="password" />

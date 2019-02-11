@@ -71,7 +71,7 @@ class MovieInfo extends Component {
         const images = actors.map((actor) => {
             return (
                 <div key={actor} className="image-container">
-                    <div style={{backgroundImage: `url('${this.state.POSTER_URL}${actor}')`}} className="actor-img"></div>
+                    <div style={{backgroundImage: `url('${actor !== null && actor.length > 0 ? this.state.POSTER_URL + actor : 'http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg'}')`}} className="actor-img"></div>
                 </div>
             )
         })
@@ -110,7 +110,7 @@ class MovieInfo extends Component {
                             <div className="movie-info">
                                 <p className="runtime-date"><span>{this.props.currentImdbData.Rated}</span> &bull; {chosenMovie.runtime} min</p>
                                 <p className="overview">{chosenMovie.overview}</p>
-                                <p className="tagline">- {chosenMovie.tagline}</p>
+                                <p className="tagline">{chosenMovie.tagline !== undefined && chosenMovie.tagline.length > 0 ? `- ${chosenMovie.tagline}` : ''}</p>
                                 <div className="info">
 
                                 </div>
@@ -121,7 +121,7 @@ class MovieInfo extends Component {
                                             <div className="images">
                                                 {images}
                                             </div>
-                                            <div className="names">
+                                            {/* <div className="names">
                                                 {Array(this.props.currentImdbData.Actors).join().split(',').map((actor) => {
                                                     return (
                                                         <div className="name" key={actor}>
@@ -129,7 +129,7 @@ class MovieInfo extends Component {
                                                         </div>
                                                     )
                                                 })}
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
