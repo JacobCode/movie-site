@@ -7,7 +7,7 @@ import '../scss/MovieCategories.scss';
 
 import Divider from '@material-ui/core/Divider';
 
-import { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie } from '../actions/postActions';
+import { getPopularMovies, getRMovies, getKidsMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie } from '../actions/postActions';
 
 class MovieCategories extends Component {
     constructor() {
@@ -17,6 +17,7 @@ class MovieCategories extends Component {
     componentWillMount() {
         this.props.getPopularMovies();
         this.props.getRMovies();
+        this.props.getKidsMovies();
     }
     selectMovie(e) {
         this.props.getMovie(e.target.dataset.id);
@@ -59,7 +60,7 @@ class MovieCategories extends Component {
                     </div>
                 </div>
 
-                {/* R Movie Section */}
+                {/* R Movies Section */}
 
                 <div className="section">
                     <h1>Top Rated R Movies</h1>
@@ -67,6 +68,32 @@ class MovieCategories extends Component {
                     
                     <div className="movies">
                         {this.props.rMovies.map((movie, index) => {
+                                return (
+                                    <div className="slide" key={index}>
+                                        <div className="movie">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
+
+                                            </div>
+                                            <div className="info">
+                                                <h2>{movie.title}</h2>
+                                                <Divider variant="middle" />
+                                                <p>{movie.release_date.substr(0, 4)}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                {/* Kids Movies Section */}
+
+                <div className="section">
+                    <h1>Top Rated Kids Movies</h1>
+                    <Divider variant="middle" />
+                    
+                    <div className="movies">
+                        {this.props.kidsMovies.map((movie, index) => {
                                 return (
                                     <div className="slide" key={index}>
                                         <div className="movie">
@@ -93,6 +120,7 @@ class MovieCategories extends Component {
 MovieCategories.propTypes = {
     getPopularMovies: PropTypes.func.isRequired,
     getRMovies: PropTypes.func.isRequired,
+    getKidsMovies: PropTypes.func.isRequired,
     getMovie: PropTypes.func.isRequired,
     getVideos: PropTypes.func.isRequired,
     currentVideos: PropTypes.array.isRequired,
@@ -103,6 +131,7 @@ MovieCategories.propTypes = {
     getActors: PropTypes.func.isRequired,
     actors: PropTypes.array,
     rMovies: PropTypes.array.isRequired,
+    kidsMovies: PropTypes.array.isRequired,
     toggleMovie: PropTypes.func.isRequired
 }
 
@@ -112,7 +141,8 @@ const mapStateToProps = state => ({
     currentImdbData: state.movies.currentImdbData,
     chosenMovie: state.movies.chosenMovie,
     rMovies: state.movies.rMovies,
+    kidsMovies: state.movies.kidsMovies,
     actors: state.movies.actors
 })
 
-export default connect(mapStateToProps, { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie })(MovieCategories);
+export default connect(mapStateToProps, { getPopularMovies, getRMovies, getKidsMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie })(MovieCategories);

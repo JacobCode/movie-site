@@ -49,7 +49,7 @@ app.get('/movies/popular', (req, res) => {
         })
 })
 
-// R movies
+// R Movies
 app.get('/movies/ratedr', (req, res) => {
     axios.get(`${API_URL}/discover/movie/?certification_country=US&certification=R&${API_KEY}&language=en-US&page=1`)
         .then(function (response) {
@@ -57,6 +57,17 @@ app.get('/movies/ratedr', (req, res) => {
         })
         .catch(function (error) {
             console.log(error)
+        })
+})
+
+// Kids Movies
+app.get('/movies/kids', (req, res) => {
+    axios.get(`${API_URL}/discover/movie/?certification_country=US&certification=G&${API_KEY}&language=en-US&page=1`)
+        .then(function( response) {
+            res.json(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
         })
 })
 

@@ -1,10 +1,9 @@
 import {
   SEARCH_MOVIES,
-  FETCH_POSTS,
-  NEW_POST,
   UPCOMING_MOVIES,
   POPULAR_MOVIES,
   R_MOVIES,
+  KIDS_MOVIES,
   GET_MOVIE,
   GET_VIDEOS,
   GENRES,
@@ -24,40 +23,13 @@ export const searchMovies = (query) => dispatch => {
       return res.json();
     })
     .then((response) => {
+      console.log(response.results);
       dispatch({
         type: SEARCH_MOVIES,
         payload: response.results
       })
     })
 }
-
-export const fetchPosts = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res => res.json())
-    .then(posts =>
-      dispatch({
-        type: FETCH_POSTS,
-        payload: posts
-      })
-    );
-};
-
-export const createPost = postData => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(postData)
-  })
-    .then(res => res.json())
-    .then(post =>
-      dispatch({
-        type: NEW_POST,
-        payload: post
-      })
-    );
-};
 
 export const getUpcomingMovies = () => dispatch => {
   fetch('/movies/upcoming')
@@ -99,6 +71,19 @@ export const getRMovies = () => dispatch => {
         payload: movies.results
       })
     })
+}
+
+export const getKidsMovies = () => dispatch => {
+  fetch('/movies/kids')
+    .then((res) => {
+      return res.json();
+    })
+    .then((movies => {
+      dispatch({
+        type: KIDS_MOVIES,
+        payload: movies.results
+      })
+    }))
 }
 
 export const getMovie = (id) => dispatch => {
@@ -154,6 +139,7 @@ export const getImdbData = (imdb_id) => dispatch => {
 }
 
 export const getImages = (images) => dispatch => {
+  console.log('GET IMAGES');
   dispatch({
     type: ACTOR_IMAGES,
     payload: images
@@ -161,6 +147,7 @@ export const getImages = (images) => dispatch => {
 }
 
 export const getActors = (actors) => dispatch => {
+  console.log('GET ACTORS');
   if (actors.length > 1 && actors !== undefined) {
     const actor_url = 'http://api.themoviedb.org/3/search/person?';
     const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';

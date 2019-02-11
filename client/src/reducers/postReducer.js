@@ -3,6 +3,7 @@ import {
   UPCOMING_MOVIES,
   POPULAR_MOVIES,
   R_MOVIES,
+  KIDS_MOVIES,
   GET_MOVIE,
   GET_VIDEOS,
   GENRES,
@@ -18,6 +19,7 @@ const initialState = {
   upcomingMovies: [],
   popularMovies: [],
   rMovies: [],
+  kidsMovies: [],
   chosenMovie: {},
   currentVideos: [],
   currentImdbData: {},
@@ -43,6 +45,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         rMovies: action.payload
+      }
+    case KIDS_MOVIES:
+      return {
+        ...state,
+        kidsMovies: action.payload
       }
     case GET_MOVIE:
       return {
