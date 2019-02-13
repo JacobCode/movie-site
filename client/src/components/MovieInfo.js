@@ -42,12 +42,13 @@ class MovieInfo extends Component {
         open: this.props.isToggled,
         POSTER_URL: 'http://image.tmdb.org/t/p/w500',
         isLoading: false,
-        snackbarOpen: false
+        openTrailer: false,
+        openError: false
     };
     getVideos = () => {
-        console.log(this.props.currentVideos);
         this.setState({
-            snackbarOpen: true
+            openTrailer: true,
+            openError: true
         })
     }
     componentWillReceiveProps(nextProps) {
@@ -64,7 +65,7 @@ class MovieInfo extends Component {
         }
     }
     handleClose = () => {
-        this.setState({ open: false, isLoading: false, snackbarOpen: false });
+        this.setState({ open: false, isLoading: false, openTrailer: false, openError: false });
     };
     render() {
         const { classes, chosenMovie, actors } = this.props;
@@ -139,7 +140,7 @@ class MovieInfo extends Component {
                     
                     <Divider variant="middle" />
                     
-                    <EmbeddedVideo video={this.props.currentVideos[0]} open={this.state.snackbarOpen} />
+                    <EmbeddedVideo video={this.props.currentVideos[0]} openTrailer={this.state.openTrailer} openError={this.state.openError} />
                 </Dialog>
             </div>
         );

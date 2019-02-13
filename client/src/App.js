@@ -19,12 +19,12 @@ import store from './store';
 import './scss/App.scss';
 
 import { createMuiTheme } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
+import deepOrange from '@material-ui/core/colors/deepOrange';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 const theme = createMuiTheme({
   palette: {
-    primary: indigo,
+    primary: deepOrange,
     secondary: blueGrey,
   },
   typography: {
@@ -41,10 +41,10 @@ class App extends Component {
             <div className="App">
               <Navigation />
               <Switch>
-                <Route path={process.env.PUBLIC_URL + '/'} component={Page} exact />
+                <Route path={process.env.PUBLIC_URL + '/'} component={Discover} exact />
                 <Route path={process.env.PUBLIC_URL + '/discover'} component={Discover} exact />
                 <Route path={process.env.PUBLIC_URL + '/login'} component={Login} exact />
-                <Route path={process.env.PUBLIC_URL + '/searchmovies'} component={SearchMovies} exact />
+                <Route path={process.env.PUBLIC_URL + '/search'} component={SearchMovies} exact />
               </Switch>
               <MovieInfo />
             </div>

@@ -173,7 +173,8 @@ Carousel.propTypes = {
   chosenMovie: PropTypes.object.isRequired,
   getActors: PropTypes.func.isRequired,
   genres: PropTypes.array.isRequired,
-  toggleMovie: PropTypes.func.isRequired
+  toggleMovie: PropTypes.func.isRequired,
+  actors: PropTypes.array
 };
 
 const mapStateToProps = state => ({

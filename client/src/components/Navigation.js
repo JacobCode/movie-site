@@ -15,6 +15,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { withRouter } from 'react-router-dom';
+
 import { searchMovies } from '../actions/postActions';
 
 // SCSS
@@ -51,10 +53,12 @@ class Navigation extends Component {
         })
     }
     handleSearch(e) {
+        console.log(this.state.searchInputValue)
         e.preventDefault();
         // Make sure user entered query
         if (this.state.searchInputValue.length > 0) {
             this.props.searchMovies(this.state.searchInputValue);
+            this.props.history.push('/search');
         }
     }
     render() {
@@ -72,7 +76,7 @@ class Navigation extends Component {
                     <ListItem button component="a" href="/discover">
                             <ListItemText primary="Discover Movies" />
                     </ListItem>
-                    <ListItem button component="a" href="/searchmovies">
+                    <ListItem button component="a" href="/search">
                             <ListItemText primary="Search Movies" />
                     </ListItem>
                 </List>
@@ -94,7 +98,7 @@ class Navigation extends Component {
                             <MenuIcon />
                         </IconButton>
                         {/* Right Menu Search */}
-                        <form action="/login" onSubmit={this.handleSearch} className="search">
+                        <form onSubmit={this.handleSearch} className="search">
                             <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" required />
                             <SearchIcon onClick={this.handleSearch} />
                         </form>
@@ -125,4 +129,4 @@ const mapStateToProps = state => ({
     searchOutput: state.movies.searchOutput
 })
 
-export default connect(mapStateToProps, { searchMovies })(withStyles(styles)(Navigation));
+export default connect(mapStateToProps, { searchMovies })(withRouter((withStyles(styles)(Navigation))));

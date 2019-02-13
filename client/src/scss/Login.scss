@@ -1,2 +1,29 @@
 @import './variables';
 
+#login {
+    .container {
+        border: 2px solid yellow;
+        max-width: 600px;
+        padding: 1.5rem;
+        .pages {
+            display: flex;
+            h1 {
+                width: 50%;
+                text-align: center;
+                &.active {
+                    color: red;
+                }
+            }
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            input {
+                
+            }
+        }
+        p {
+
+        }
+    }
+}

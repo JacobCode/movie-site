@@ -23,7 +23,6 @@ export const searchMovies = (query) => dispatch => {
       return res.json();
     })
     .then((response) => {
-      console.log(response.results);
       dispatch({
         type: SEARCH_MOVIES,
         payload: response.results
@@ -87,6 +86,7 @@ export const getKidsMovies = () => dispatch => {
 }
 
 export const getMovie = (id) => dispatch => {
+  console.log(id);
   fetch(`/movie/${id}`)
     .then((res) => {
       return res.json();
@@ -100,11 +100,13 @@ export const getMovie = (id) => dispatch => {
 }
 
 export const getVideos = (id) => dispatch => {
+  console.log('Get Videos');
   fetch(`/movies/videos/${id}`)
     .then((res) => {
       return res.json();
     })
     .then((videos) => {
+      console.log(videos);
       dispatch({
         type: GET_VIDEOS,
         payload: videos
@@ -126,11 +128,13 @@ export const getGenres = () => dispatch => {
 }
 
 export const getImdbData = (imdb_id) => dispatch => {
+  console.log('Get Imdb Data');
   fetch(`/imdb/${imdb_id}`)
     .then((res) => {
       return res.json();
     })
     .then((imdb_data) => {
+      console.log(imdb_data)
       dispatch({
         type: GET_IMDB,
         payload: imdb_data
@@ -147,7 +151,7 @@ export const getImages = (images) => dispatch => {
 }
 
 export const getActors = (actors) => dispatch => {
-  console.log('GET ACTORS');
+  console.log(actors);
   if (actors.length > 1 && actors !== undefined) {
     const actor_url = 'http://api.themoviedb.org/3/search/person?';
     const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
@@ -170,6 +174,7 @@ export const getActors = (actors) => dispatch => {
 }
 
 export const toggleMovie = (bool) => dispatch => {
+  console.log(bool);
   dispatch({
     type: TOGGLE_MOVIE,
     payload: bool

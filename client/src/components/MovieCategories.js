@@ -21,7 +21,7 @@ class MovieCategories extends Component {
     }
     selectMovie(e) {
         this.props.getMovie(e.target.dataset.id);
-        this.props.getVideos(e.target.dataset.id);
+        this.props.getVideos(e.target.dataset.id)
         setTimeout(() => {
             this.props.getImdbData(this.props.chosenMovie.imdb_id);
             this.props.toggleMovie(true);

@@ -13,7 +13,7 @@
         max-width: none;
         .react-swipeable-view-container {
             .sliding-content {
-                min-height: 74vh;
+                min-height: 77vh;
                 display: flex;
                 align-items: center;
                 padding: 1.5rem;
@@ -43,7 +43,7 @@
                     font-family: $default;
                     h1 {
                         padding: 0;
-                        margin-bottom: 1rem;
+                        margin: 1rem 0;
                         font-size: 1.8rem;
                         display: flex;
                         align-items: center;
