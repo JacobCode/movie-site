@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d'
-const API_URL = `https://api.themoviedb.org/3`
+const API_URL = 'https://api.themoviedb.org/3'
 
 // In Theatres
 app.get('/movies/theatres', (req, res) => {
@@ -111,6 +111,17 @@ app.get('/imdb/:id', (req, res) => {
     axios.get(`${imdb_url}/?i=${req.params.id}&${imdb_key}`)
         .then(function (response) {
             res.json(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+})
+
+// Tv Shows
+app.get('/tvshows', (req, res) => {
+    axios.get(`${API_URL}/discover/tv?${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_original_language=en`)
+        .then(function (response) {
+            res.json(response.data.results);
         })
         .catch(function (error) {
             console.log(error);
