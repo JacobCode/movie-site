@@ -70,8 +70,8 @@ class Navigation extends Component {
                     <ListItem button component="a" href="/">
                             <ListItemText primary="Home" />
                     </ListItem>
-                    <ListItem button component="a" href="/login">
-                            <ListItemText primary="Login / Sign Up" />
+                    <ListItem button component="a" href="/tvshows">
+                            <ListItemText primary="TV Shows" />
                     </ListItem>
                     <ListItem button component="a" href="/discover">
                             <ListItemText primary="Discover Movies" />
@@ -79,9 +79,7 @@ class Navigation extends Component {
                     <ListItem button component="a" href="/search">
                             <ListItemText primary="Search Movies" />
                     </ListItem>
-                </List>
-                <Divider />
-                <List>
+                    <Divider />
                     <ListItem button>
                         <ListItemText primary={<div id="closeNav">Close<CloseIcon /></div>} />
                     </ListItem>

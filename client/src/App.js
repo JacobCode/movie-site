@@ -7,8 +7,8 @@ import Navigation from './components/Navigation';
 
 // Components
 import Discover from './containers/Discover';
-import Login from './containers/Login';
 import Page from './containers/Page';
+import TVShows from './containers/TVShows';
 import SearchMovies from './containers/SearchMovies';
 import MovieInfo from './components/MovieInfo';
 
@@ -43,7 +43,7 @@ class App extends Component {
               <Switch>
                 <Route path={process.env.PUBLIC_URL + '/'} component={Discover} exact />
                 <Route path={process.env.PUBLIC_URL + '/discover'} component={Discover} exact />
-                <Route path={process.env.PUBLIC_URL + '/login'} component={Login} exact />
+                <Route path={process.env.PUBLIC_URL + '/tvshows'} component={TVShows} exact />
                 <Route path={process.env.PUBLIC_URL + '/search'} component={SearchMovies} exact />
               </Switch>
               <MovieInfo />
