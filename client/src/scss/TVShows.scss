@@ -1,0 +1,49 @@
+@import './variables';
+
+#tv-shows {
+    h1 {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding: 2rem;
+        grid-gap: 2rem;
+        margin: 0 auto;
+        .show {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h4 {
+                font-weight: 400;
+            }
+            img {
+                margin: 1rem 0;
+                height: 250px;
+                width: 175px;
+                border-radius: 1rem;
+            }
+            .info {
+                display: flex;
+                align-items: center;
+                span {
+                    padding: 0.5rem;
+                    &.rating {
+                        display: flex;
+                        align-items: center;
+                        svg {
+                            height: 10px;
+                        }
+                    }
+                    &.air-date {
+
+                    }
+                }
+            }
+        }
+    }
+}

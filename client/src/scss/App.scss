@@ -3,6 +3,11 @@
 
 body {
     overflow-y: none;
+    // background: $bg;
+}
+
+hr {
+    background: rgba(0, 0, 0, 0.12) !important;
 }
 
 * {

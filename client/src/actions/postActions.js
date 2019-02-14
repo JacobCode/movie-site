@@ -10,7 +10,8 @@ import {
   GET_IMDB,
   ACTOR_IMAGES,
   GET_ACTORS,
-  TOGGLE_MOVIE
+  TOGGLE_MOVIE,
+  GET_TV_SHOWS
 } from './types';
 
 const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
@@ -179,4 +180,18 @@ export const toggleMovie = (bool) => dispatch => {
     type: TOGGLE_MOVIE,
     payload: bool
   })
+}
+
+export const getTvShows = () => dispatch => {
+  fetch('/tvshows')
+    .then((res) => {
+      return res.json();
+    })
+    .then((shows) => {
+      console.log(shows);
+      dispatch({
+        type: GET_TV_SHOWS,
+        payload: shows
+      })
+    })
 }

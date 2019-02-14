@@ -11,3 +11,4 @@ export const GET_IMDB = 'GET_IMDB';
 export const ACTOR_IMAGES = 'ACTOR_IMAGES';
 export const GET_ACTORS = 'GET_ACTORS';
 export const TOGGLE_MOVIE = 'TOGGLE_MOVIE';
+export const GET_TV_SHOWS = 'GET_TV_SHOWS';

@@ -50,6 +50,7 @@ class SearchMovies extends Component {
                                 )
                             })}
                         </div>
+                        <span>Results: {searchOutput.length}</span>
                     </div>
                 </div>
             )

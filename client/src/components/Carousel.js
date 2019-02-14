@@ -11,14 +11,12 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Chip from '@material-ui/core/Chip';
 import Divider from '@material-ui/core/Divider';
+import Star from '@material-ui/icons/Star';
 
 import { getUpcomingMovies, getMovie, getVideos, getGenres, getImdbData, getActors, toggleMovie } from '../actions/postActions';
 
 // SCSS
 import '../scss/Carousel.scss';
-
-// Image
-import starIcon from '../images/star_rate.svg';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -89,7 +87,7 @@ class Carousel extends Component {
         return (
             <div id="carousel">
                 <h1>Upcoming Releases</h1>
-                <Divider variant="middle" />
+                <Divider  variant="middle" />
                 <div className={classes.root}>
                     <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -116,12 +114,12 @@ class Carousel extends Component {
                                 <div className="sliding-content" key={index}>
                                     {Math.abs(activeStep - index) <= 2 ? (
                                         <div className="image-container">
-                                            <div className="img" style={{backgroundImage: `url('${POSTER_URL}/${step.poster_path}')`}}></div>
+                                            <div data-id={step.id} onClick={this.viewMovie} className="img" style={{backgroundImage: `url('${POSTER_URL}/${step.poster_path}')`}}></div>
                                         </div>
                                     ) : null}
                                     <div className="text">
                                         <h1>{step.title} <span>{step.adult === true ? 'R' : 'PG-13'}</span></h1>
-                                        <div className="info"><span className="date">{step.release_date.substr(0, 4)}</span> &bull; <span className="rating">{step.vote_average} / 10 <img src={starIcon} alt="star_rating" /></span></div>
+                                        <div className="info"><span className="date">{step.release_date.substr(0, 4)}</span> &bull; <span className="rating">{step.vote_average} / 10 <Star /></span></div>
                                         <p className="plot">{step.overview}</p>
                                         {/* ********** INSERT HERE ********** */}
                                         <div className="genres">

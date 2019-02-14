@@ -6,6 +6,7 @@
         font-family: $default;
         font-weight: 400;
         padding: 1.5rem;
+        margin: 0 0.5rem;
         font-size: 1.5rem;
     }
     .Carousel-root-92 {
@@ -16,8 +17,9 @@
                 min-height: 77vh;
                 display: flex;
                 align-items: center;
-                padding: 1.5rem;
+                padding: 3rem;
                 .image-container {
+                    cursor: pointer;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -49,17 +51,17 @@
                         align-items: center;
                         span {
                             background: $darkGrey;
-                            color: white;
+                            color: $lightGrey;
                             min-width: 75px;
                             text-align: center;
                             font-size: 0.825rem;
                             border-radius: 0.5rem;
-                            padding: 0.5rem 1rem;
+                            padding: 0.5rem 1rem 0.45rem;
                             margin-left: 1rem;
                         }
                     }
                     div.info {
-                        margin-bottom: 1rem;
+                        margin-bottom: 2rem;
                         display: flex;
                         align-items: center;
                         span.date {
@@ -69,8 +71,10 @@
                             display: flex;
                             align-items: center;
                             margin-left: 0.5rem;
-                            img {
-                                margin-left: 0.25rem;
+                            svg {
+                                margin-left: 0.5rem;
+                                height: 20px;
+                                width: 20px;
                             }
                         }
                     }
@@ -78,6 +82,7 @@
                         font-size: 1.2rem;
                         line-height: 1.4;
                         margin-bottom: 2rem;
+                        font-weight: 400;
                     }
                     .genres {
                         margin-bottom: 2rem;
@@ -202,15 +207,21 @@
 }
 @media screen and (max-width: 480px) {
     #carousel {
+        h1 {
+            padding: 1rem;
+        }
         .Carousel-root-92 {
             margin-top: 2rem;
             .react-swipeable-view-container {
                 .sliding-content {
+                    padding: 1rem 1.5rem;
                     .image-container {
                         margin-bottom: 2rem;
                         .bg {
                         }
                         .img {
+                            height: 600px;
+                            min-width: 300px;
                         }
                     }
                     .text {

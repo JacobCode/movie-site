@@ -19,6 +19,8 @@ import { withRouter } from 'react-router-dom';
 
 import { searchMovies } from '../actions/postActions';
 
+import movieTicketIcon from '../images/movie-ticket-icon.svg';
+
 // SCSS
 import '../scss/Navigation.scss';
 
@@ -91,10 +93,13 @@ class Navigation extends Component {
                 {/* Appbar */}
                 <AppBar color="primary" className="appbar" position="static">
                     <Toolbar className="toolbar">
-                        {/* Left Menu Icon */}
-                        <IconButton onClick={this.toggleDrawer('left', true)} color="inherit" aria-label="Open drawer">
-                            <MenuIcon />
-                        </IconButton>
+                        <div className="brand">
+                            <IconButton onClick={this.toggleDrawer('left', true)} color="inherit" aria-label="Open drawer">
+                                {/* Left Menu Icon */}
+                                <MenuIcon />
+                            </IconButton>
+                            <h1>MoviePro <img src={movieTicketIcon} alt="Movie Ticket" /></h1>
+                        </div>
                         {/* Right Menu Search */}
                         <form onSubmit={this.handleSearch} className="search">
                             <InputBase onChange={this.handleSearchChange} placeholder="Search Movies" required />
