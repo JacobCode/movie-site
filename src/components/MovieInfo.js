@@ -69,9 +69,9 @@ class MovieInfo extends Component {
     };
     render() {
         const { classes, chosenMovie, actors } = this.props;
-        const images = actors.map((actor) => {
+        const images = actors.map((actor, index) => {
             return (
-                <div key={actor} className="image-container">
+                <div key={index} className="image-container">
                     <div style={{backgroundImage: `url('${actor !== null && actor.length > 0 ? this.state.POSTER_URL + actor : 'http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg'}')`}} className="actor-img"></div>
                 </div>
             )

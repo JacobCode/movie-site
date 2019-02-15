@@ -55,7 +55,6 @@ class Navigation extends Component {
         })
     }
     handleSearch(e) {
-        console.log(this.state.searchInputValue)
         e.preventDefault();
         // Make sure user entered query
         if (this.state.searchInputValue.length > 0) {
