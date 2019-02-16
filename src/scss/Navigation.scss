@@ -1,9 +1,5 @@
 @import './variables';
 
-.MuiAppBar-colorPrimary-10 {
-    // background: black !important;
-}
-
 #navigation {
     .appbar {
         .toolbar {
@@ -11,12 +7,16 @@
             .brand {
                 display: flex;
                 align-items: center;
+                color: $lightGreen;
                 h1 {
                     margin-left: 1rem;
-                    font-size: 1.5rem;
                     font-weight: 300;
                     display: flex;
                     align-items: center;
+                    color: white;
+                    font-family: $display;
+                    font-size: 2rem;
+                    letter-spacing: 1px;
                     img {
                         margin-left: 1.5rem;
                         height: 35px;
@@ -26,9 +26,10 @@
             .search {
                 display: flex;
                 align-items: center;
+                color: $lightGreen;
                 input {
                     color: white;
-                    border: 2px solid $lightOrange;
+                    border: 2px solid $lightGreen;
                     border-radius: 0.5rem;
                     padding: 0;
                     padding: 0.5rem 2rem 0.5rem 1rem;
@@ -48,12 +49,6 @@
     }
 }
 
-@media screen and (max-width: 992px) {
-    
-}
-@media screen and (max-width: 768px) {
-
-}
 @media screen and (max-width: 480px) {
     #navigation {
         .appbar {
@@ -61,14 +56,6 @@
                 .brand {
                     h1 {
                         display: none;
-                    }
-                }
-                .search {
-                    input {
-                        
-                    }
-                    svg {
-                        
                     }
                 }
             }

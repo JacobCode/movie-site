@@ -39,6 +39,7 @@
         }
     }
     #app-bar {
+        color: white;
         #tool-bar {
             button {
                 margin-right: 1rem;
@@ -220,6 +221,7 @@
         }
     }
 }
+
 @media screen and (max-width: 768px) {
     #dialog {
         .main-content {
@@ -256,6 +258,7 @@
         }
     }
 }
+
 @media screen and (max-width: 480px) {
     #snackbar {
         justify-content: flex-start;

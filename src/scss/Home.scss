@@ -27,7 +27,7 @@
                 left: 0;
             }
             &.movies {
-                background-image: url('http://image.tmdb.org/t/p/w300//7WsyChQLEftFiDOVTGkv3hFpyyt.jpg');
+                background-image: url('http://image.tmdb.org/t/p/w500//hXgmWPd1SuujRZ4QnKLzrj79PAw.jpg');
                 right: 0;
             }
             span {
@@ -52,13 +52,11 @@
                 }
 
                 &.movies {
-                    border-top: 2px solid $orange;
+                    border-top: 5px solid $lightGreen;
                     bottom: 0;
                     -webkit-transform: translateY(13%);
                     transform: translateY(13%);
                 }
-
-                span {}
             }
         }
     }
