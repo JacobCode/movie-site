@@ -10,6 +10,7 @@
 
 #carousel {
     min-height: 91vh;
+
     h1 {
         font-family: $default;
         font-weight: 400;
@@ -18,9 +19,6 @@
         font-size: 1.5rem;
         color: $darkGrey;
     }
-    .Carousel-root-92 {
-        min-height: 81vh;
-        max-width: none;
         .react-swipeable-view-container {
             .sliding-content {
                 min-height: 77vh;
@@ -33,6 +31,8 @@
                     justify-content: center;
                     align-items: center;
                     margin-right: 3rem;
+                    min-height: 435px;
+                    min-width: 275px;
                     .img {
                         height: 100%;
                         min-width: 275px;
@@ -110,19 +110,16 @@
                 }
             }
         }
-    }
 }
 
 @media screen and (max-width: 992px) {
     #carousel {
-        .Carousel-root-92 {
-            .react-swipeable-view-container {
-                .sliding-content {
-                    .text {
-                        max-width: 800px;
-                        padding: 1.5rem;
-                        font-family: $default;
-                    }
+        .react-swipeable-view-container {
+            .sliding-content {
+                .text {
+                    max-width: 800px;
+                    padding: 1.5rem;
+                    font-family: $default;
                 }
             }
         }
@@ -135,27 +132,25 @@
             padding: 1rem;
             margin: 1rem;
         }
-        .Carousel-root-92 {
-            // Hide controller on small screens
-            .MuiPaper-root-12.MuiPaper-elevation0-14.MuiMobileStepper-root-100.MuiMobileStepper-positionStatic-103 {
-                display: none;
-            }
-            .react-swipeable-view-container {
-                .sliding-content {
-                    flex-direction: column;
-                    .image-container {
-                        margin: 0;
-                        .img {
-                            -webkit-box-shadow: 0px 0px 20px 10px rgb(204, 204, 204);
-                            -moz-box-shadow: 0px 0px 20px 10px rgb(204, 204, 204);
-                            box-shadow: 0px 0px 20px 10px rgb(204, 204, 204);
-                        }
+        // Hide controller on small screens
+        .MuiPaper-root-12.MuiPaper-elevation0-14.MuiMobileStepper-root-100.MuiMobileStepper-positionStatic-103 {
+            display: none;
+        }
+        .react-swipeable-view-container {
+            .sliding-content {
+                flex-direction: column;
+                .image-container {
+                    margin: 0;
+                    .img {
+                        -webkit-box-shadow: 0px 0px 20px 10px rgb(204, 204, 204);
+                        -moz-box-shadow: 0px 0px 20px 10px rgb(204, 204, 204);
+                        box-shadow: 0px 0px 20px 10px rgb(204, 204, 204);
                     }
-                    .text {
-                        max-width: 800px;
-                        padding: 1.5rem;
-                        font-family: $default;
-                    }
+                }
+                .text {
+                    max-width: 800px;
+                    padding: 1.5rem;
+                    font-family: $default;
                 }
             }
         }
@@ -163,31 +158,29 @@
 }
 @media screen and (max-width: 480px) {
     #carousel {
-        .Carousel-root-92 {
+        .react-swipeable-view-container {
             margin-top: 2rem;
-            .react-swipeable-view-container {
-                .sliding-content {
-                    padding: 1rem 1.5rem;
-                    .image-container {
-                        margin-bottom: 2rem;
-                        .img {
-                            height: 600px;
-                            min-width: 300px;
-                            -webkit-box-shadow: 0px 0px 30px 5px rgba(204, 204, 204, 0.781);
-                            -moz-box-shadow: 0px 0px 30px 5px rgba(204, 204, 204, 0.781);
-                            box-shadow: 0px 0px 30px 5px rgba(204, 204, 204, 0.781);
-                        }
+            .sliding-content {
+                padding: 1rem 1.5rem;
+                .image-container {
+                    margin-bottom: 2rem;
+                    .img {
+                        height: 600px;
+                        min-width: 300px;
+                        -webkit-box-shadow: 0px 0px 30px 5px rgba(204, 204, 204, 0.781);
+                        -moz-box-shadow: 0px 0px 30px 5px rgba(204, 204, 204, 0.781);
+                        box-shadow: 0px 0px 30px 5px rgba(204, 204, 204, 0.781);
                     }
-                    .text {
-                        max-width: 800px;
-                        padding: 0;
-                        font-family: $default;
-                        h1 {
-                            font-size: 1.5rem;
-                        }
-                        .genres {
-                            display: none;
-                        }
+                }
+                .text {
+                    max-width: 800px;
+                    padding: 0;
+                    font-family: $default;
+                    h1 {
+                        font-size: 1.5rem;
+                    }
+                    .genres {
+                        display: none;
                     }
                 }
             }
