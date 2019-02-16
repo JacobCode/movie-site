@@ -55,10 +55,17 @@
 }
 
 @media screen and (max-width: 992px) {
-
+    #search-results {
+        h1 {
+            color: red;
+        }
+    }
 }
 @media screen and (max-width: 768px) {
     #search-results {
+        h1 {
+            color: blue;
+        }
         .container {
             .movies {
                 .movie {
@@ -70,6 +77,9 @@
 }
 @media screen and (max-width: 480px) {
     #search-results {
+        h1 {
+            color: green;
+        }
         .container {
             .movies {
                 .movie {

@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 
-// Components
-
+import '../scss/Home.scss';
 
 class Home extends Component {
     render() {
         return (
-            <div>
-                <h1>Home Page</h1>
+            <div id="home">
+                <div className="container main">
+                    <a href="/tvshows" className="tv">
+                        <div></div>
+                        <span>TV Shows</span>
+                    </a>
+                    <a href="/discover" className="movies">
+                        <div></div>
+                        <span>Movies</span>
+                    </a>
+                </div>
             </div>
         )
     }
