@@ -119,7 +119,7 @@ class Carousel extends Component {
                                     ) : null}
                                     <div className="text">
                                         <h1>{step.title} <span>{step.adult === true ? 'R' : 'PG-13'}</span></h1>
-                                        <div className="info"><span className="date">{step.release_date.substr(0, 4)}</span> &bull; <span className="rating">{step.vote_average} / 10 <Star /></span></div>
+                                        <div className="info"><span className="date">{step.release_date.substr(0, 4)}</span> &bull; <span className="rating">{step.vote_average > 0 ? `${step.vote_average} / 10`: 'Not Rated'}<Star /></span></div>
                                         <p className="plot">{step.overview}</p>
                                         {/* ********** INSERT HERE ********** */}
                                         <div className="genres">

@@ -20,12 +20,12 @@ import store from './store';
 import './scss/App.scss';
 
 import { createMuiTheme } from '@material-ui/core/styles';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+import green from '@material-ui/core/colors/green';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 const theme = createMuiTheme({
   palette: {
-    primary: deepOrange,
+    primary: green,
     secondary: blueGrey,
   },
   typography: {

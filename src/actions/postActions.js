@@ -148,7 +148,9 @@ export const getActors = (actors) => dispatch => {
           return res.json();
         })
         .then((actor) => {
-          actorImages.push(actor.results[0].profile_path)
+          if (actor.results[0] !== undefined) {
+            actorImages.push(actor.results[0].profile_path)
+          }
         })
     })
     dispatch({

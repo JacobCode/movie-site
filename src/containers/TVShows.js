@@ -25,7 +25,8 @@ class TVShows extends Component {
                                 <h4>{show.name}</h4>
                                 <img src={`${POSTER_URL}${show.poster_path}`} />
                                 <div className="info">
-                                    <span className="rating">{show.vote_average} <Star /></span>
+                                    <span className="rating">{show.vote_average > 0 ? `${show.vote_average}`: 'NR'} <Star /></span>
+                                    &bull;
                                     <span className="air-date">{show.first_air_date.substr(0, 4)}</span>
                                 </div>
                             </div>

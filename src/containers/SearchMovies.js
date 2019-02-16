@@ -33,6 +33,7 @@ class SearchMovies extends Component {
             return (
                 <div id="search-results">
                     <h1>Search Results</h1>
+                    <Divider variant="fullWidth" />
                     <div className="container">
                         <div className="movies">
                             {searchOutput.map((movie, index) => {
