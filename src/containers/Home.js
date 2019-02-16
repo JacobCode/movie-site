@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Components
 
 
-class Page extends Component {
+class Home extends Component {
     render() {
         return (
             <div>
@@ -13,4 +13,4 @@ class Page extends Component {
     }
 }
 
-export default Page;
+export default Home;

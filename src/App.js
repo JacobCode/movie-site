@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Layout
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
 // Components
 import Discover from './containers/Discover';
-import Page from './containers/Page';
+import Home from './containers/Home';
 import TVShows from './containers/TVShows';
 import SearchMovies from './containers/SearchMovies';
 import MovieInfo from './components/MovieInfo';
@@ -41,11 +42,12 @@ class App extends Component {
             <div className="App">
               <Navigation />
               <Switch>
-                <Route path={process.env.PUBLIC_URL + '/'} component={Discover} exact />
+                <Route path={process.env.PUBLIC_URL + '/'} component={Home} exact />
                 <Route path={process.env.PUBLIC_URL + '/discover'} component={Discover} exact />
                 <Route path={process.env.PUBLIC_URL + '/tvshows'} component={TVShows} exact />
                 <Route path={process.env.PUBLIC_URL + '/search'} component={SearchMovies} exact />
               </Switch>
+              <Footer />
               <MovieInfo />
             </div>
           </MuiThemeProvider>
