@@ -15,16 +15,20 @@ class MovieCategories extends Component {
         this.selectMovie = this.selectMovie.bind(this);
     }
     componentWillMount() {
+        // Get movies for movie categories
         this.props.getFutureMovies();
         this.props.getPopularMovies();
         this.props.getRMovies();
         this.props.getKidsMovies();
     }
     selectMovie(e) {
+        // Get movie info
         this.props.getMovie(e.target.dataset.id);
         this.props.getVideos(e.target.dataset.id)
         setTimeout(() => {
+            // IMBD Data
             this.props.getImdbData(this.props.chosenMovie.imdb_id);
+            // Open movie info
             this.props.toggleMovie(true);
             setTimeout(() => {
                 this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));

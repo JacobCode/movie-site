@@ -52,11 +52,14 @@ class Carousel extends Component {
         this.props.getUpcomingMovies();
         this.props.getGenres();
     }
+    // Get individual movie
     viewMovie(e) {
         this.props.getMovie(e.target.dataset.id);
         this.props.getVideos(e.target.dataset.id)
         setTimeout(() => {
+            // IMDB Data
             this.props.getImdbData(this.props.chosenMovie.imdb_id);
+            // Open movie info
             this.props.toggleMovie(true);
             setTimeout(() => {
                 this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
@@ -70,7 +73,7 @@ class Carousel extends Component {
         const POSTER_URL = 'http://image.tmdb.org/t/p/w500';
         return (
             <div id="carousel">
-                <h1>Upcoming Releases</h1>
+                <h1>New & Upcoming Releases</h1>
                 <Divider  variant="middle" />
                 <div className={classes.root}>
                     <AutoPlaySwipeableViews

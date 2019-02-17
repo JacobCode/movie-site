@@ -19,6 +19,7 @@ class EmbeddedVideo extends Component {
         this.openTrailer = this.openTrailer.bind(this);
     }
     componentWillReceiveProps(nextProps) {
+        // Open trailer snackbar if there is a video
         if (nextProps.openTrailer) {
             this.openTrailer();
         } else if (nextProps.openError) {
@@ -39,7 +40,7 @@ class EmbeddedVideo extends Component {
         this.setState({
             openError: true
         });
-        console.log("OPEN")
+        console.log("ERROR")
     }
     closeError() {
         this.setState({
@@ -48,6 +49,7 @@ class EmbeddedVideo extends Component {
     }
     render() {
         const { vertical, horizontal } = this.state;
+        // Movie trailer snackbar
         if (this.props.video !== undefined) {
             return (
                 <Snackbar id="snackbar"
@@ -73,6 +75,7 @@ class EmbeddedVideo extends Component {
                 </Snackbar>
             )
         } else {
+            // Error snackbar
             return (
                 <Snackbar id="error-snackbar"
                 anchorOrigin={{ vertical, horizontal }}

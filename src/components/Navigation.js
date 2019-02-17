@@ -66,7 +66,6 @@ class Navigation extends Component {
         const { classes } = this.props;
         const sideList = (
             <div className={classes.list}>
-                
                 <List>
                     <ListItem button component="a" href="/">
                             <ListItemText primary="Home" />

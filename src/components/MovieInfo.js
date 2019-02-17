@@ -16,7 +16,7 @@ import Slide from '@material-ui/core/Slide';
 import Divider from '@material-ui/core/Divider';
 
 import { connect } from 'react-redux';
-import { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, getImages } from '../actions/postActions';
+import { getPopularMovies, getRMovies, getVideos, getMovie, getActors, getImages } from '../actions/postActions';
 
 // Components
 import EmbeddedVideo from './EmbeddedVideo';
@@ -55,13 +55,13 @@ class MovieInfo extends Component {
         if (nextProps) {
             setTimeout(() => {
                 this.setState({
-                    isLoading: false
-                })
+                    open: this.props.isToggled,
+                    isLoading: true
+                });
             }, 500)
-            this.setState({
-                open: this.props.isToggled,
-                isLoading: true
-            });
+        }
+        if (nextProps.chosenMovie) {
+            console.log(nextProps.chosenMovie)
         }
     }
     handleClose = () => {
@@ -69,6 +69,7 @@ class MovieInfo extends Component {
     };
     render() {
         const { classes, chosenMovie, actors } = this.props;
+        // Actor images
         const images = actors.map((actor, index) => {
             return (
                 <div key={index} className="image-container">
@@ -92,8 +93,7 @@ class MovieInfo extends Component {
                                 <CloseIcon />
                             </IconButton>
                             <Typography component="a" href={chosenMovie.homepage} color="inherit" className={classes.flex}>
-                                {/* IMDB TITLE */}
-                                {this.props.currentImdbData.Title}
+                                {chosenMovie.title}
                             </Typography>
                         </Toolbar>
                     </AppBar>
@@ -106,15 +106,17 @@ class MovieInfo extends Component {
                                 <div className="poster" style={{backgroundImage: `url('${this.state.POSTER_URL}/${chosenMovie.poster_path}')`}}>
                                     
                                 </div>
+                                {/* Open embedded video */}
                                 <Button onClick={this.getVideos} variant="contained" color="secondary">Watch Trailer</Button>
                             </div>
                             <div className="movie-info">
-                                <p className="runtime-date"><span>{this.props.currentImdbData.Rated}</span> &bull; {chosenMovie.runtime} min</p>
+                                <p className="runtime-date"><span>{chosenMovie.adult === false ? 'PG-13' : 'Adult'}</span> &bull; {chosenMovie.runtime} min</p>
                                 <p className="overview">{chosenMovie.overview}</p>
                                 <p className="tagline">{chosenMovie.tagline !== undefined && chosenMovie.tagline.length > 0 ? `- ${chosenMovie.tagline}` : ''}</p>
                                 <div className="info">
 
                                 </div>
+                                {/* Actors */}
                                 <div className="actors-container">
                                     <h1>Actors</h1>
                                     <div className="actors-list">
@@ -151,13 +153,11 @@ MovieInfo.propTypes = {
     classes: PropTypes.object.isRequired,
     chosenMovie: PropTypes.object.isRequired,
     currentVideos: PropTypes.array.isRequired,
-    currentImdbData: PropTypes.object.isRequired,
     getImages: PropTypes.func.isRequired,
     getPopularMovies: PropTypes.func.isRequired,
     getRMovies: PropTypes.func.isRequired,
     getVideos: PropTypes.func.isRequired,
     getMovie: PropTypes.func.isRequired,
-    getImdbData: PropTypes.func.isRequired,
     getActors: PropTypes.func.isRequired,
     actorImages: PropTypes.string,
     actors: PropTypes.array,
@@ -168,10 +168,9 @@ MovieInfo.propTypes = {
 const mapStateToProps = state => ({
     chosenMovie: state.movies.chosenMovie,
     currentVideos: state.movies.currentVideos,
-    currentImdbData: state.movies.currentImdbData,
     actorImages: state.movies.actorImages,
     actors: state.movies.actors,
     isToggled: state.movies.isToggled
 })
 
-export default connect(mapStateToProps, { getPopularMovies, getRMovies, getVideos, getMovie, getImdbData, getActors, getImages })(withStyles(styles)(MovieInfo));
+export default connect(mapStateToProps, { getPopularMovies, getRMovies, getVideos, getMovie, getActors, getImages })(withStyles(styles)(MovieInfo));

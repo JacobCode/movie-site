@@ -58,6 +58,13 @@
                         display: none;
                     }
                 }
+                .search {
+                    input {
+                        &:focus {
+                            width: 200px;
+                        }
+                    }
+                }
             }
         }
     }
