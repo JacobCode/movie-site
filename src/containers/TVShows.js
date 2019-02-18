@@ -13,7 +13,7 @@ class TVShows extends Component {
     }
     render() {
         const { tvShows } = this.props;
-        const POSTER_URL = 'http://image.tmdb.org/t/p/w500';
+        const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
         return (
             <div id="tv-shows">
                 <h1>Popular TV SHOWS</h1>

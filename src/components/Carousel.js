@@ -70,7 +70,7 @@ class Carousel extends Component {
         const { classes, theme } = this.props;
         const { activeStep } = this.state;
         const maxSteps = this.props.upcomingMovies.length;
-        const POSTER_URL = 'http://image.tmdb.org/t/p/w500';
+        const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
         return (
             <div id="carousel">
                 <h1>New & Upcoming Releases</h1>
@@ -105,7 +105,7 @@ class Carousel extends Component {
                                         </div>
                                     ) : null}
                                     <div className="text">
-                                        <h1>{step.title} <span>{step.adult === true ? 'R' : 'PG-13'}</span></h1>
+                                        <h1>{step.title} <span>{step.adult === true ? '17+' : '13+'}</span></h1>
                                         <div className="info"><span className="date">{step.release_date.substr(0, 4)}</span> &bull; <span className="rating">{step.vote_average > 0 ? `${step.vote_average} / 10`: 'Not Rated'}<Star /></span></div>
                                         <p className="plot">{step.overview}</p>
                                         {/* ********** INSERT HERE ********** */}
@@ -125,6 +125,7 @@ class Carousel extends Component {
                     position="static"
                     activeStep={activeStep}
                     className={classes.mobileStepper}
+                    id="stepper"
                     // Next Button
                     nextButton={
                         <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>

@@ -36,7 +36,7 @@ class MovieCategories extends Component {
         }, 500)
     }
     render() {
-        const POSTER_URL = 'http://image.tmdb.org/t/p/w300';
+        const POSTER_URL = 'https://image.tmdb.org/t/p/w300';
         const { futureMovies, kidsMovies, rMovies, popularMovies } = this.props;
             return (
                 <div id="movie-categories">

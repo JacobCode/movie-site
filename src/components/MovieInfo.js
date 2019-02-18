@@ -16,7 +16,7 @@ import Slide from '@material-ui/core/Slide';
 import Divider from '@material-ui/core/Divider';
 
 import { connect } from 'react-redux';
-import { getPopularMovies, getRMovies, getVideos, getMovie, getActors, getImages } from '../actions/postActions';
+import { getPopularMovies, getRMovies, getVideos, getMovie, getActors } from '../actions/postActions';
 
 // Components
 import EmbeddedVideo from './EmbeddedVideo';
@@ -40,7 +40,7 @@ function Transition(props) {
 class MovieInfo extends Component {
     state = {
         open: this.props.isToggled,
-        POSTER_URL: 'http://image.tmdb.org/t/p/w500',
+        POSTER_URL: 'https://image.tmdb.org/t/p/w500',
         isLoading: false,
         openTrailer: false,
         openError: false
@@ -60,15 +60,15 @@ class MovieInfo extends Component {
                 });
             }, 500)
         }
-        if (nextProps.chosenMovie) {
-            console.log(nextProps.chosenMovie)
+        if (nextProps.currentImdbData.Title) {
+            console.log(nextProps.currentImdbData)
         }
     }
     handleClose = () => {
         this.setState({ open: false, isLoading: false, openTrailer: false, openError: false });
     };
     render() {
-        const { classes, chosenMovie, actors } = this.props;
+        const { classes, chosenMovie, actors, currentImdbData } = this.props;
         // Actor images
         const images = actors.map((actor, index) => {
             return (
@@ -110,7 +110,7 @@ class MovieInfo extends Component {
                                 <Button onClick={this.getVideos} variant="contained" color="secondary">Watch Trailer</Button>
                             </div>
                             <div className="movie-info">
-                                <p className="runtime-date"><span>{chosenMovie.adult === false ? 'PG-13' : 'Adult'}</span> &bull; {chosenMovie.runtime} min</p>
+                                <p className="runtime-date"><span>{currentImdbData.Rated === 'G' ? 'G' : currentImdbData.Rated === 'R' ? 'R' : 'PG-13'}</span> &bull; {chosenMovie.runtime} min</p>
                                 <p className="overview">{chosenMovie.overview}</p>
                                 <p className="tagline">{chosenMovie.tagline !== undefined && chosenMovie.tagline.length > 0 ? `- ${chosenMovie.tagline}` : ''}</p>
                                 <div className="info">
@@ -124,15 +124,6 @@ class MovieInfo extends Component {
                                             <div className="images">
                                                 {images}
                                             </div>
-                                            {/* <div className="names">
-                                                {Array(this.props.currentImdbData.Actors).join().split(',').map((actor) => {
-                                                    return (
-                                                        <div className="name" key={actor}>
-                                                            <span>{actor}</span>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -153,12 +144,12 @@ MovieInfo.propTypes = {
     classes: PropTypes.object.isRequired,
     chosenMovie: PropTypes.object.isRequired,
     currentVideos: PropTypes.array.isRequired,
-    getImages: PropTypes.func.isRequired,
     getPopularMovies: PropTypes.func.isRequired,
     getRMovies: PropTypes.func.isRequired,
     getVideos: PropTypes.func.isRequired,
     getMovie: PropTypes.func.isRequired,
     getActors: PropTypes.func.isRequired,
+    currentImdbData: PropTypes.object.isRequired,
     actorImages: PropTypes.string,
     actors: PropTypes.array,
 
@@ -168,9 +159,9 @@ MovieInfo.propTypes = {
 const mapStateToProps = state => ({
     chosenMovie: state.movies.chosenMovie,
     currentVideos: state.movies.currentVideos,
-    actorImages: state.movies.actorImages,
+    currentImdbData: state.movies.currentImdbData,
     actors: state.movies.actors,
     isToggled: state.movies.isToggled
 })
 
-export default connect(mapStateToProps, { getPopularMovies, getRMovies, getVideos, getMovie, getActors, getImages })(withStyles(styles)(MovieInfo));
+export default connect(mapStateToProps, { getPopularMovies, getRMovies, getVideos, getMovie, getActors })(withStyles(styles)(MovieInfo));

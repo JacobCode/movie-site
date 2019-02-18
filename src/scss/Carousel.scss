@@ -127,17 +127,13 @@
 }
 
 @media screen and (max-width: 768px) {
-    .MuiPaper-root-12.MuiPaper-elevation0-14.MuiMobileStepper-root-97.MuiMobileStepper-positionStatic-100 {
+    #stepper {
         display: none !important;
     }
     #carousel {
         h1 {
             padding: 1rem;
             margin: 1rem;
-        }
-        // Hide controller on small screens
-        .MuiPaper-root-12.MuiPaper-elevation0-14.MuiMobileStepper-root-100.MuiMobileStepper-positionStatic-103 {
-            display: none;
         }
         .react-swipeable-view-container {
             .sliding-content {

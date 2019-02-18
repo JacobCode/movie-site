@@ -115,7 +115,7 @@ export const getGenres = () => dispatch => {
 
 export const getImdbData = (imdb_id) => dispatch => {
   const imdb_key = 'apikey=5d02e9db';
-  const imdb_url = 'http://www.omdbapi.com';
+  const imdb_url = 'https://www.omdbapi.com';
   axios.get(`${imdb_url}/?i=${imdb_id}&${imdb_key}`)
     .then((response) => {
       dispatch({
@@ -134,7 +134,7 @@ export const getImages = (images) => dispatch => {
 
 export const getActors = (actors) => dispatch => {
   if (actors.length > 1 && actors !== undefined) {
-    const actor_url = 'http://api.themoviedb.org/3/search/person?';
+    const actor_url = 'https://api.themoviedb.org/3/search/person?';
     const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
     const actorImages = [];
     actors.forEach((actor) => {

@@ -27,7 +27,7 @@ class SearchMovies extends Component {
         }, 500)
     }
     render() {
-        const POSTER_URL = 'http://image.tmdb.org/t/p/w500';
+        const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
         const { searchOutput } = this.props
         if (this.props.searchOutput.length > 0) {
             return (
