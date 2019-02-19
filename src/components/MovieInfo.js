@@ -155,14 +155,14 @@ class MovieInfo extends Component {
             // TV Info Dialog
             return (
                 <div id="tv-info">
-                <Dialog
-                fullScreen
-                open={this.state.open}
-                onClose={this.handleClose}
-                TransitionComponent={Transition}
-                id="dialog"
-                >
-                    <AppBar id="app-bar" className={classes.appBar}>
+                    <Dialog
+                    fullScreen
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    TransitionComponent={Transition}
+                    id="tv-dialog"
+                    >
+                        <AppBar id="app-bar" className={classes.appBar}>
                         <Toolbar id="tool-bar">
                             <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
                                 <CloseIcon />
@@ -172,53 +172,53 @@ class MovieInfo extends Component {
                             </Typography>
                         </Toolbar>
                     </AppBar>
-                    <div className="cover" style={{backgroundImage: `url('${this.state.POSTER_URL}/${chosenShow.backdrop_path}')`}}></div>
-                    <div className="main-content">
-                        <div className="content">
-                            <div className="poster-container">
+                        <div className="cover" style={{backgroundImage: `url('${this.state.POSTER_URL}/${chosenShow.backdrop_path}')`}}></div>
+                        <div className="main-content">
+                            <div className="content">
+                                <div className="poster-container">
                                 <div className="poster" style={{backgroundImage: `url('${this.state.POSTER_URL}/${chosenShow.poster_path}')`}}>
                                     
                                 </div>
                                 {/* Open embedded video */}
                                 <Button variant="contained" color="secondary">Button</Button>
                             </div>
-                            <div className="tv-info">
-                                <p className="overview">{chosenShow.overview}</p>
-                                <p className="tagline">{chosenShow.status} - {chosenShow.next_episode_to_air.air_date.substring(0, 4)}</p>
-                                <div className="info">
+                                <div className="tv-info">
+                                    <p className="overview">{chosenShow.overview}</p>
+                                    <p className="tagline">{chosenShow.status} - {chosenShow.next_episode_to_air.air_date.substring(0, 4)}</p>
+                                    <div className="info">
 
                                 </div>
-                                <div className="tv-content">
-                                    {/* Seasons */}
-                                    <div className="seasons-container">
-                                        <h1>Seasons &bull; {chosenShow.number_of_seasons}</h1>
-                                        <div className="seasons-list">
-                                            {chosenShow.seasons.map((season, index) => {
+                                    <div className="tv-content">
+                                        {/* Seasons */}
+                                        <div className="seasons-container">
+                                            <h1>Seasons &bull; {chosenShow.number_of_seasons}</h1>
+                                            <div className="seasons-list">
+                                                {chosenShow.seasons.map((season, index) => {
+                                                    return (
+                                                        <div className="season" key={index}>
+                                                            <div className="img"style={{backgroundImage: `url('${this.state.POSTER_URL}/${season.poster_path}')`}}></div>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        {/* Genres */}
+                                        <div className="genres-container">
+                                            <h1>Genres</h1>
+                                            <div className="genre-list">
+                                                {chosenShow.genres.map((genre, index) => {
                                                 return (
-                                                    <div className="season" key={index}>
-                                                        <div className="img"style={{backgroundImage: `url('${this.state.POSTER_URL}/${season.poster_path}')`}}></div>
-                                                    </div>
+                                                    <Chip key={index} label={genre.name} />
                                                 )
                                             })}
-                                        </div>
-                                    </div>
-                                    {/* Genres */}
-                                    <div className="genres-container">
-                                        <h1>Genres</h1>
-                                        <div className="genre-list">
-                                            {chosenShow.genres.map((genre, index) => {
-                                            return (
-                                                <Chip key={index} label={genre.name} />
-                                            )
-                                        })}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </Dialog>
-            </div>
+                    </Dialog>
+                </div>
             )
         } else {
             return (

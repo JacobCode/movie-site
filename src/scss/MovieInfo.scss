@@ -30,7 +30,12 @@
     }
 }
 
-#dialog {
+body {
+    overflow: scroll !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+#dialog, #tv-dialog {
     max-height: none !important;
     .MuiDialog-container-139.MuiDialog-scrollPaper-137 {
         .MuiPaper-root-12.MuiPaper-elevation24-38.MuiPaper-rounded-13.MuiDialog-paper-140.MuiDialog-paperScrollPaper-141.MuiDialog-paperWidthSm-144.MuiDialog-paperFullScreen-149 {
@@ -41,7 +46,7 @@
         color: white;
         #tool-bar {
             button {
-                margin-right: 1rem;
+                margin: 0.5rem;
             }
             a {
                 text-decoration: none;
@@ -212,7 +217,10 @@
         }
 
     }
-
+    #tv-info {
+        overflow-y: scroll !important;
+        -webkit-overflow-scrolling: touch;
+    }
     .tv-info {
         max-width: 70%;
         p.overview {
@@ -236,6 +244,7 @@
                 .seasons-list {
                     display: flex;
                     overflow-x: scroll;
+                    -webkit-overflow-scrolling: touch;
                     .season {
                         .img {
                             height: 300px;
@@ -257,7 +266,7 @@
                 }
                 .genre-list {
                     div {
-                        margin-right: 1rem;
+                        margin: 0.5rem;
                         span {
                             
                         }
@@ -269,7 +278,7 @@
 }
 
 @media screen and (max-width: 992px) {
-    #dialog {
+    #dialog, #tv-dialog {
         .main-content {
             .content {
                 .poster-container {
@@ -318,7 +327,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    #dialog {
+    #dialog, #tv-dialog {
         .main-content {
             .content {
                 .movie-content, .tv-content {
@@ -373,7 +382,7 @@
             width: 100vw;
         }
     }
-    #dialog {
+    #dialog, #tv-dialog {
         .main-content {
             .content {
                 .poster-container {
