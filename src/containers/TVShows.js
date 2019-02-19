@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTvShows } from '../actions/postActions';
+import { getTvShows, getShow, toggleMovie } from '../actions/postActions';
 import Divider from '@material-ui/core/Divider';
 import Star from '@material-ui/icons/Star';
 
 import '../scss/TVShows.scss';
 
 class TVShows extends Component {
+    constructor() {
+        super();
+        this.choseShow = this.choseShow.bind(this);
+    }
     componentWillMount() {
         this.props.getTvShows();
+    }
+    choseShow(e) {
+        this.props.getShow(e.target.dataset.id);
+        setTimeout(() => {
+            this.props.toggleMovie(true);
+        }, 500)
     }
     render() {
         const { tvShows } = this.props;
@@ -23,7 +33,7 @@ class TVShows extends Component {
                         return (
                             <div className="show" key={index}>
                                 <h4>{show.name}</h4>
-                                <img src={`${POSTER_URL}${show.poster_path}`} />
+                                <img onClick={this.choseShow} data-id={show.id} src={`${POSTER_URL}${show.poster_path}`} alt={show.name} />
                                 <div className="info">
                                     <span className="rating">{show.vote_average > 0 ? `${show.vote_average}`: 'NR'} <Star /></span>
                                     &bull;
@@ -40,11 +50,13 @@ class TVShows extends Component {
 
 TVShows.propTypes = {
     tvShows: PropTypes.array.isRequired,
-    getTvShows: PropTypes.func.isRequired
+    getTvShows: PropTypes.func.isRequired,
+    getShow: PropTypes.func.isRequired,
+    toggleMovie: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     tvShows: state.movies.tvShows
 })
 
-export default connect(mapStateToProps, { getTvShows })(TVShows);
+export default connect(mapStateToProps, { getTvShows, getShow, toggleMovie })(TVShows);

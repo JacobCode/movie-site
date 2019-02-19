@@ -13,7 +13,6 @@
         }
     } 
 }
-
 #error-snackbar {
     .MuiSnackbarContent-root-191 {
         background: #b71c1c;
@@ -71,6 +70,9 @@
             min-height: 725px;
             max-height: none;
             width: 100%;
+            .movie-content, .tv-content {
+                display: flex;
+            }
             .poster-container {
                 position: absolute;
                 top: 25%;
@@ -87,7 +89,7 @@
                     width: 250px;
                 }
             }
-            .movie-info {
+            .movie-info, .tv-info {
                 margin-right: 2rem;
                 position: absolute;
                 min-width: 300px;
@@ -109,6 +111,7 @@
                     margin-bottom: 1rem;
                     font-size: 1.2rem;
                     max-width: 90%;
+                    color: $darkGrey;
                 }
                 p.tagline {
                     font-style: italic;
@@ -118,12 +121,43 @@
                     margin-bottom: 4rem;
                 }
             }
-            .actors-container {
+            .ratings-container {
                 padding-bottom: 2rem;
+                width: 30%;
+                margin-right: 2rem;
                 h1 {
                     font-size: 2rem;
                     font-weight: 400;
                     margin-bottom: 2rem;
+                    color: $darkGrey;
+                }
+                .ratings-list {
+                    max-width: 350px;
+                    .rating {
+                        margin-bottom: 2rem;
+                        h5 {
+                            margin-bottom: 0.5rem;
+                            font-weight: 400;
+                            color: $blueGrey;
+                            font-size: 1.2rem;
+                        }
+                        p {
+                            margin-top: 0.5rem;
+                            font-size: 1.1rem;
+                            color: $darkGrey;
+                        }
+                    }
+                }
+            }
+            .actors-container {
+                padding-bottom: 2rem;
+                min-width: 300px;
+                width: 60%;
+                h1 {
+                    font-size: 2rem;
+                    font-weight: 400;
+                    margin-bottom: 2rem;
+                    color: $darkGrey;
                 }
                 .actors-list {
                     .actor {
@@ -172,8 +206,65 @@
                     }
                 }
             }
+            .genres-container {
+                
+            }
         }
 
+    }
+
+    .tv-info {
+        max-width: 70%;
+        p.overview {
+            max-width: 100% !important;
+        }
+        p.tagline {
+            max-width: 100%;
+        }
+        .tv-content {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            .seasons-container {
+                padding-bottom: 2rem;
+                h1 {
+                    font-size: 2rem;
+                    font-weight: 400;
+                    margin-bottom: 2rem;
+                    color: $darkGrey;
+                }
+                .seasons-list {
+                    display: flex;
+                    overflow-x: scroll;
+                    .season {
+                        .img {
+                            height: 300px;
+                            width: 200px;
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                }
+            }
+            .genres-container {
+                padding-bottom: 1.5rem;
+                h1 {
+                    font-size: 2rem;
+                    font-weight: 400;
+                    margin-bottom: 2rem;
+                    color: $darkGrey;
+                }
+                .genre-list {
+                    div {
+                        margin-right: 1rem;
+                        span {
+                            
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -187,7 +278,8 @@
                     left: 50%;
                     transform:translateX(-50%);
                 }
-                .movie-info {
+                .movie-info, .tv-info {
+                    max-width: none;
                     top: 72%;
                     left: 0;
                     margin: 0;
@@ -196,6 +288,9 @@
                     p.overview {
                         min-width: 100%;
                     }
+                }
+                .tv-info {
+                    top: 78%;
                 }
                 .actors-container {
                     padding-bottom: 2rem;
@@ -226,20 +321,31 @@
     #dialog {
         .main-content {
             .content {
+                .movie-content, .tv-content {
+                    flex-direction: column;
+                }
                 .poster-container {
                     position: absolute;
                     top: 20%;
                     left: 50%;
                     transform:translateX(-50%);
                 }
-                .movie-info {
+                .movie-info, .tv-info {
                     top: 84%;
                     left: 0;
                     margin: 0;
-                    padding: 0 2rem;
+                    padding: 0 1.5rem;
                     width: 100%;
                     p.overview {
                         min-width: 100%;
+                    }
+                }
+
+                .ratings-container {
+                    width: 100%;
+                    margin: 0;
+                    .ratings-list {
+                        margin: 0;
                     }
                 }
 
@@ -274,11 +380,10 @@
                     position: absolute;
                     top: 20%;
                 }
-                .movie-info {
+                .movie-info, .tv-info {
                     top: 84%;
                     left: 0;
                     margin: 0;
-                    padding: 0 2rem;
                     width: 100%;
                     p.overview {
                         min-width: 100%;

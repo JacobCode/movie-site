@@ -19,8 +19,6 @@ import { withRouter } from 'react-router-dom';
 
 import { searchMovies } from '../actions/postActions';
 
-import movieTicketIcon from '../images/movie-ticket-icon.svg';
-
 // SCSS
 import '../scss/Navigation.scss';
 
@@ -96,7 +94,7 @@ class Navigation extends Component {
                                 {/* Left Menu Icon */}
                                 <MenuIcon />
                             </IconButton>
-                            <h1>MoviePro <img src={movieTicketIcon} alt="Movie Ticket" /></h1>
+                            <h1>MoviePro</h1>
                         </div>
                         {/* Right Menu Search */}
                         <form onSubmit={this.handleSearch} className="search">

@@ -12,7 +12,8 @@ import {
   ACTOR_IMAGES,
   GET_ACTORS,
   TOGGLE_MOVIE,
-  GET_TV_SHOWS
+  GET_TV_SHOWS,
+  GET_SHOW
 } from '../actions/types';
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   rMovies: [],
   kidsMovies: [],
   chosenMovie: {},
+  chosenShow: {},
   currentVideos: [],
   tvShows: [],
   currentImdbData: {},
@@ -104,6 +106,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         tvShows: action.payload
+      }
+    case GET_SHOW:
+      return {
+        ...state,
+        chosenShow: action.payload
       }
     default:
       return state;
