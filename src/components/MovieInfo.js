@@ -112,7 +112,9 @@ class MovieInfo extends Component {
                                 <div className="movie-info">
                                     <p className="runtime-date"><span>{currentImdbData.Rated === 'G' ? 'G' : currentImdbData.Rated === 'R' ? 'R' : 'PG-13'}</span> &bull; {chosenMovie.runtime} min</p>
                                     <p className="overview">{chosenMovie.overview}</p>
-                                    <p className="tagline">{chosenMovie.tagline !== undefined && chosenMovie.tagline.length > 0 ? `- ${chosenMovie.tagline}` : ''}</p>
+                                    <p className="tagline">
+                                        {chosenMovie.tagline !== undefined && chosenMovie.tagline.length > 0 ? `- ${chosenMovie.tagline}` : ''}
+                                    </p>
                                     <div className="info">
 
                                     </div>

@@ -54,17 +54,18 @@ class Carousel extends Component {
     }
     // Get individual movie
     viewMovie(e) {
+        // Get movie info
         this.props.getMovie(e.target.dataset.id);
-        this.props.getVideos(e.target.dataset.id)
+        this.props.getVideos(e.target.dataset.id);
         setTimeout(() => {
-            // IMDB Data
+            // IMBD Data
             this.props.getImdbData(this.props.chosenMovie.imdb_id);
-            // Open movie info
-            this.props.toggleMovie(true);
             setTimeout(() => {
                 this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
-            }, 100)
-        }, 500)
+                // Open movie info
+                this.props.toggleMovie(true);
+            }, 250)
+        }, 750)
     }
     render() {
         const { classes, theme } = this.props;
@@ -105,7 +106,7 @@ class Carousel extends Component {
                                         </div>
                                     ) : null}
                                     <div className="text">
-                                        <h1>{step.title} <span>{step.adult === true ? '17+' : '13+'}</span></h1>
+                                        <h1>{step.title} <span>{step.adult === true ? 'R' : 'PG-13'}</span></h1>
                                         <div className="info"><span className="date">{step.release_date.substr(0, 4)}</span> &bull; <span className="rating">{step.vote_average > 0 ? `${step.vote_average} / 10`: 'Not Rated'}<Star /></span></div>
                                         <p className="plot">{step.overview}</p>
                                         {/* ********** INSERT HERE ********** */}

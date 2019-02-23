@@ -24,16 +24,16 @@ class MovieCategories extends Component {
     selectMovie(e) {
         // Get movie info
         this.props.getMovie(e.target.dataset.id);
-        this.props.getVideos(e.target.dataset.id)
+        this.props.getVideos(e.target.dataset.id);
         setTimeout(() => {
             // IMBD Data
             this.props.getImdbData(this.props.chosenMovie.imdb_id);
-            // Open movie info
-            this.props.toggleMovie(true);
             setTimeout(() => {
                 this.props.getActors(Array(this.props.currentImdbData.Actors).join().split(','));
-            }, 100)
-        }, 500)
+                // Open movie info
+                this.props.toggleMovie(true);
+            }, 250)
+        }, 750)
     }
     render() {
         const POSTER_URL = 'https://image.tmdb.org/t/p/w300';

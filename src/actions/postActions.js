@@ -158,7 +158,7 @@ export const getActors = (actors) => dispatch => {
 }
 
 export const toggleMovie = (bool) => dispatch => {
-  console.log('SHOULD OPEN')
+  console.log('OPEN')
   dispatch({
     type: TOGGLE_MOVIE,
     payload: bool
@@ -178,7 +178,6 @@ export const getTvShows = () => dispatch => {
 export const getShow = (id) => dispatch => {
   axios.get(`${API_URL}/tv/${id}?${API_KEY}&language=en-US`)
     .then((response) => {
-      console.log(response.data);
       dispatch({
         type: GET_SHOW,
         payload: response.data
