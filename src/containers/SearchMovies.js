@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import theatre from '../images/theatre.svg';
+
 import Divider from '@material-ui/core/Divider';
 
 import { getMovie, getVideos, getImdbData, getActors, toggleMovie } from '../actions/postActions';
@@ -51,14 +53,15 @@ class SearchMovies extends Component {
                                 )
                             })}
                         </div>
-                        <span>Results: {searchOutput.length}</span>
+                        <span id="results-amount">Results: {searchOutput.length}</span>
                     </div>
                 </div>
             )
         } else {
             return (
                 <div id="no-results">
-                    <h1>NO RESULTS...</h1>
+                    <h1>Start searching through thousands of movies!</h1>
+                    <img src={theatre} alt="No Results" />
                 </div>
             )
         }

@@ -46,7 +46,12 @@ body {
         color: white;
         #tool-bar {
             button {
-                margin: 0.5rem;
+                margin-right: 1.5rem;
+                padding: 0.5rem;
+                padding: 0;
+                &:hover {
+                    background: none;
+                }
             }
             a {
                 text-decoration: none;

@@ -181,12 +181,10 @@ class MovieInfo extends Component {
                                 <div className="poster" style={{backgroundImage: `url('${this.state.POSTER_URL}/${chosenShow.poster_path}')`}}>
                                     
                                 </div>
-                                {/* Open embedded video */}
-                                <Button variant="contained" color="secondary">Button</Button>
                             </div>
                                 <div className="tv-info">
                                     <p className="overview">{chosenShow.overview}</p>
-                                    <p className="tagline">{chosenShow.status} - {chosenShow.next_episode_to_air.air_date.substring(0, 4)}</p>
+                                    <p className="tagline">{chosenShow.next_episode_to_air !== null ? `${chosenShow.status} - ${chosenShow.next_episode_to_air.air_date.substring(0, 4)}` : `${chosenShow.status} - Date Unavailable`}</p>
                                     <div className="info">
 
                                 </div>
@@ -196,11 +194,13 @@ class MovieInfo extends Component {
                                             <h1>Seasons &bull; {chosenShow.number_of_seasons}</h1>
                                             <div className="seasons-list">
                                                 {chosenShow.seasons.map((season, index) => {
-                                                    return (
-                                                        <div className="season" key={index}>
-                                                            <div className="img"style={{backgroundImage: `url('${this.state.POSTER_URL}/${season.poster_path}')`}}></div>
-                                                        </div>
-                                                    )
+                                                    if (season.poster_path !== null) {
+                                                        return (
+                                                            <div className="season" key={index}>
+                                                                <div className="img"style={{backgroundImage: `url('${this.state.POSTER_URL}/${season.poster_path}')`}}></div>
+                                                            </div>
+                                                        )
+                                                    }
                                                 })}
                                             </div>
                                         </div>

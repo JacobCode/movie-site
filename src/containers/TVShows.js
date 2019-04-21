@@ -10,12 +10,12 @@ import '../scss/TVShows.scss';
 class TVShows extends Component {
     constructor() {
         super();
-        this.choseShow = this.choseShow.bind(this);
+        this.chooseShow = this.chooseShow.bind(this);
     }
     componentWillMount() {
         this.props.getTvShows();
     }
-    choseShow(e) {
+    chooseShow(e) {
         this.props.getShow(e.target.dataset.id);
         setTimeout(() => {
             this.props.toggleMovie(true);
@@ -33,7 +33,7 @@ class TVShows extends Component {
                         return (
                             <div className="show" key={index}>
                                 <h4>{show.name}</h4>
-                                <img onClick={this.choseShow} data-id={show.id} src={`${POSTER_URL}${show.poster_path}`} alt={show.name} />
+                                <img onClick={this.chooseShow} data-id={show.id} src={`${POSTER_URL}${show.poster_path}`} alt={show.name} />
                                 <div className="info">
                                     <span className="rating">{show.vote_average > 0 ? `${show.vote_average}`: 'NR'} <Star /></span>
                                     &bull;
