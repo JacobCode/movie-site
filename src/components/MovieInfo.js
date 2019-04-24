@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+// Material UI
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import Chip from '@material-ui/core/Chip';
-// import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,7 +15,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import Divider from '@material-ui/core/Divider';
 
-import { connect } from 'react-redux';
 import { getPopularMovies, getRMovies, getVideos, getMovie, getActors } from '../actions/postActions';
 
 // Components
@@ -31,7 +32,7 @@ const styles = {
   },
 };
 
-function Transition(props) {
+const Transition = (props) => {
   return <Slide direction="up" {...props} />;
 }
 
@@ -42,7 +43,7 @@ class MovieInfo extends Component {
         isLoading: false,
         openTrailer: false,
         openError: false
-    };
+    }
     getVideos = () => {
         this.setState({
             openTrailer: true,
@@ -58,16 +59,10 @@ class MovieInfo extends Component {
                 });
             }, 500)
         }
-        if (nextProps.currentImdbData.Title) {
-            console.log(nextProps.currentImdbData)
-        }
-        if (nextProps.chosenShow.genres) {
-            console.log(nextProps.chosenShow);
-        }
     }
     handleClose = () => {
         this.setState({ open: false, isLoading: false, openTrailer: false, openError: false });
-    };
+    }
     render() {
         const { classes, chosenMovie, actors, currentImdbData, chosenShow } = this.props;
         // Actor images
@@ -115,36 +110,38 @@ class MovieInfo extends Component {
                                     <p className="tagline">
                                         {chosenMovie.tagline !== undefined && chosenMovie.tagline.length > 0 ? `- ${chosenMovie.tagline}` : ''}
                                     </p>
-                                    <div className="info">
-
-                                    </div>
+                                    <div className="info"></div>
                                     <div className="movie-content">
-                                        {/* Ratings */}
-                                    <div className="ratings-container">
-                                        <h1>Ratings</h1>
-                                        <div className="ratings-list">
-                                            {currentImdbData.Ratings.map((rating, index) => {
-                                                return (
-                                                    <div className="rating" key={index}>
-                                                        <h5>{rating.Source}</h5>
-                                                        <Divider />
-                                                        <p>{rating.Value}</p>
-                                                    </div>
-                                                )
-                                            })}
+                                    {/* Ratings */}
+                                    {currentImdbData.Ratings.length === 0 ? null : 
+                                        <div className="ratings-container">
+                                            <h1>Ratings</h1>
+                                            <div className="ratings-list">
+                                                {currentImdbData.Ratings.map((rating, index) => {
+                                                    return (
+                                                        <div className="rating" key={index}>
+                                                            <h5>{rating.Source}</h5>
+                                                            <Divider />
+                                                            <p>{rating.Value}</p>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                     {/* Actors */}
-                                    <div className="actors-container">
-                                        <h1>Actors</h1>
-                                        <div className="actors-list">
-                                            <div className="actor">
-                                                <div className="images">
-                                                    {images}
+                                    {actors.length === 0 ? null : 
+                                        <div className="actors-container">
+                                            <h1>Actors</h1>
+                                            <div className="actors-list">
+                                                <div className="actor">
+                                                    <div className="images">
+                                                        {images}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    }
                                     </div>
                                 </div>
                             </div>
@@ -200,6 +197,8 @@ class MovieInfo extends Component {
                                                                 <div className="img"style={{backgroundImage: `url('${this.state.POSTER_URL}/${season.poster_path}')`}}></div>
                                                             </div>
                                                         )
+                                                    } else {
+                                                        return null
                                                     }
                                                 })}
                                             </div>

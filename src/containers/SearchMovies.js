@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+// Image
 import theatre from '../images/theatre.svg';
 
+// Material UI
 import Divider from '@material-ui/core/Divider';
 
 import { getMovie, getVideos, getImdbData, getActors, toggleMovie } from '../actions/postActions';
@@ -42,7 +44,6 @@ class SearchMovies extends Component {
                                     return (
                                         <div key={index} className="movie">
                                             <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: movie.poster_path !== null ? `url('${POSTER_URL}/${movie.poster_path}')` : "url('https://happytoothnc.com/wp-content/uploads/2016/10/orionthemes-placeholder-image-1.jpg')"}} className="img">
-
                                             </div>
                                             <div className="info">
                                                 <h2>{movie.title}</h2>

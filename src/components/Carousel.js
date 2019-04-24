@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
+// Material UI
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Button from '@material-ui/core/Button';
@@ -20,10 +21,7 @@ import '../scss/Carousel.scss';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const styles = theme => ({
-    
-});
-
+const styles = theme => ({});
 
 class Carousel extends Component {
     constructor() {

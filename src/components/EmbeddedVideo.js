@@ -71,7 +71,6 @@ class EmbeddedVideo extends Component {
                     }
                     frameBorder="0"></iframe>
                 </div>
-                    
                 </Snackbar>
             )
         } else {
@@ -85,7 +84,6 @@ class EmbeddedVideo extends Component {
                     'aria-describedby': 'error-id'
                 }}
                 message={<span id="error-id">No Video Available <WarningIcon /></span>}>
-                    {/* <div className="error">Error </div> */}
                 </Snackbar>
             )
         }

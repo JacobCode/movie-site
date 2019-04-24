@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+// Material UI
+import Divider from '@material-ui/core/Divider';
+
 // SCSS
 import '../scss/MovieCategories.scss';
-
-import Divider from '@material-ui/core/Divider';
 
 import { getPopularMovies, getRMovies, getFutureMovies, getKidsMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie } from '../actions/postActions';
 

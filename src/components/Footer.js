@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+// Logo
 import logo from '../images/movie-db-logo.svg';
+
+// SCSS
 import '../scss/Footer.scss';
 
 class Footer extends Component {

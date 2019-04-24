@@ -19,7 +19,7 @@ class TVShows extends Component {
         this.props.getShow(e.target.dataset.id);
         setTimeout(() => {
             this.props.toggleMovie(true);
-        }, 500)
+        }, 500);
     }
     render() {
         const { tvShows } = this.props;
