@@ -7,7 +7,7 @@
             .brand {
                 display: flex;
                 align-items: center;
-                color: $lightGreen;
+                color: $lightPurple;
                 h1 {
                     margin-left: 1rem;
                     font-weight: 300;
@@ -26,10 +26,10 @@
             .search {
                 display: flex;
                 align-items: center;
-                color: $lightGreen;
+                color: $lightPurple;
                 input {
                     color: white;
-                    border: 2px solid $lightGreen;
+                    border: 2px solid $lightPurple;
                     border-radius: 0.5rem;
                     padding: 0;
                     padding: 0.5rem 2rem 0.5rem 1rem;

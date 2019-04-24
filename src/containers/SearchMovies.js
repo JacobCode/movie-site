@@ -61,7 +61,6 @@ class SearchMovies extends Component {
         } else {
             return (
                 <div id="no-results">
-                    <h1>Start searching through thousands of movies!</h1>
                     <img src={theatre} alt="No Results" />
                 </div>
             )
