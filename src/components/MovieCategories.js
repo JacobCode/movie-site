@@ -10,9 +10,14 @@ import '../scss/MovieCategories.scss';
 
 import { getPopularMovies, getRMovies, getFutureMovies, getKidsMovies, getVideos, getMovie, getImdbData, getActors, toggleMovie } from '../actions/postActions';
 
+const placeholderImg = 'https://happytoothnc.com/wp-content/uploads/2016/10/orionthemes-placeholder-image-1.jpg';
+
 class MovieCategories extends Component {
     constructor() {
         super();
+        this.state = {
+            loading: true
+        }
         this.selectMovie = this.selectMovie.bind(this);
     }
     componentWillMount() {
@@ -36,10 +41,15 @@ class MovieCategories extends Component {
             }, 250)
         }, 750)
     }
+    componentDidMount() {
+        setTimeout(() => this.setState({ loading: false }), 1000);
+    }
     render() {
         const POSTER_URL = 'https://image.tmdb.org/t/p/w300';
         const { futureMovies, kidsMovies, rMovies, popularMovies } = this.props;
-            return (
+        return (
+            <div>
+                {this.state.loading === false ? 
                 <div id="movie-categories">
                     {/* Popular Movies Section */}
                     <div className="section">
@@ -47,18 +57,18 @@ class MovieCategories extends Component {
                         <Divider variant="middle" />
                         <div className="movies">
                             {popularMovies.map((movie, index) => {
-                                    return (
-                                        <div className="slide" key={index}>
-                                            <div className="movie">
-                                                <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
-                                                </div>
-                                                <div className="info">
-                                                    <h2>{movie.title}</h2>
-                                                    <Divider variant="middle" />
-                                                    <p>{movie.release_date.substr(0, 4)}</p>
-                                                </div>
+                                return (
+                                    <div className="slide" key={index}>
+                                        <div className="movie">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: movie.poster_path !== null ? `url('${POSTER_URL}/${movie.poster_path}')` : `url(${placeholderImg})`}} className="img">
+                                            </div>
+                                            <div className="info">
+                                                <h2>{movie.title}</h2>
+                                                <Divider variant="middle" />
+                                                <p>{movie.release_date.substr(0, 4)}</p>
                                             </div>
                                         </div>
+                                    </div>
                                 )
                             })}
                         </div>
@@ -69,19 +79,19 @@ class MovieCategories extends Component {
                         <Divider variant="middle" />
                         <div className="movies">
                             {rMovies.map((movie, index) => {
-                                    return (
-                                        <div className="slide" key={index}>
-                                            <div className="movie">
-                                                <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
+                                return (
+                                    <div className="slide" key={index}>
+                                        <div className="movie">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: movie.poster_path !== null ? `url('${POSTER_URL}/${movie.poster_path}')` : `url(${placeholderImg})`}} className="img">
 
-                                                </div>
-                                                <div className="info">
-                                                    <h2>{movie.title}</h2>
-                                                    <Divider variant="middle" />
-                                                    <p>{movie.release_date.substr(0, 4)}</p>
-                                                </div>
+                                            </div>
+                                            <div className="info">
+                                                <h2>{movie.title}</h2>
+                                                <Divider variant="middle" />
+                                                <p>{movie.release_date.substr(0, 4)}</p>
                                             </div>
                                         </div>
+                                    </div>
                                 )
                             })}
                         </div>
@@ -92,19 +102,19 @@ class MovieCategories extends Component {
                         <Divider variant="middle" />
                         <div className="movies">
                             {kidsMovies.map((movie, index) => {
-                                    return (
-                                        <div className="slide" key={index}>
-                                            <div className="movie">
-                                                <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: `url('${POSTER_URL}/${movie.poster_path}')`}} className="img">
+                                return (
+                                    <div className="slide" key={index}>
+                                        <div className="movie">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: movie.poster_path !== null ? `url('${POSTER_URL}/${movie.poster_path}')` : `url(${placeholderImg})`}} className="img">
 
-                                                </div>
-                                                <div className="info">
-                                                    <h2>{movie.title}</h2>
-                                                    <Divider variant="middle" />
-                                                    <p>{movie.release_date.substr(0, 4)}</p>
-                                                </div>
+                                            </div>
+                                            <div className="info">
+                                                <h2>{movie.title}</h2>
+                                                <Divider variant="middle" />
+                                                <p>{movie.release_date.substr(0, 4)}</p>
                                             </div>
                                         </div>
+                                    </div>
                                 )
                             })}
                         </div>
@@ -115,25 +125,26 @@ class MovieCategories extends Component {
                         <Divider variant="middle" />
                         <div className="movies">
                             {futureMovies.map((movie, index) => {
-                                    return (
-                                        <div className="slide" key={index}>
-                                            <div className="movie">
-                                                <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: movie.poster_path !== null ? `url('${POSTER_URL}/${movie.poster_path}')` : "url('https://happytoothnc.com/wp-content/uploads/2016/10/orionthemes-placeholder-image-1.jpg')"}} className="img">
+                                return (
+                                    <div className="slide" key={index}>
+                                        <div className="movie">
+                                            <div data-id={movie.id} onClick={this.selectMovie} style={{backgroundImage: movie.poster_path !== null ? `url('${POSTER_URL}/${movie.poster_path}')` : `url(${placeholderImg})`}} className="img">
 
-                                                </div>
-                                                <div className="info">
-                                                    <h2>{movie.title}</h2>
-                                                    <Divider variant="middle" />
-                                                    <p>{movie.release_date.substr(0, 4)}</p>
-                                                </div>
+                                            </div>
+                                            <div className="info">
+                                                <h2>{movie.title}</h2>
+                                                <Divider variant="middle" />
+                                                <p>{movie.release_date.substr(0, 4)}</p>
                                             </div>
                                         </div>
+                                    </div>
                                 )
                             })}
                         </div>
                     </div>
-                </div>
-            )
+                </div> : <div className="loading-element categories"><h1>Loading Movies</h1></div>}
+            </div>
+        )
     }
 }
 

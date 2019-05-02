@@ -10,6 +10,9 @@ import '../scss/TVShows.scss';
 class TVShows extends Component {
     constructor() {
         super();
+        this.state = {
+            loading: true
+        }
         this.chooseShow = this.chooseShow.bind(this);
     }
     componentWillMount() {
@@ -21,28 +24,34 @@ class TVShows extends Component {
             this.props.toggleMovie(true);
         }, 500);
     }
+    componentDidMount() {
+        setTimeout(() => this.setState({ loading: false }), 1000);
+    }
     render() {
         const { tvShows } = this.props;
         const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
         return (
-            <div id="tv-shows">
-                <h1>Popular TV SHOWS</h1>
-                <Divider  variant="middle" />
-                <div className="container">
-                    {tvShows.map((show, index) => {
-                        return (
-                            <div className="show" key={index}>
-                                <h4>{show.name}</h4>
-                                <img onClick={this.chooseShow} data-id={show.id} src={`${POSTER_URL}${show.poster_path}`} alt={show.name} />
-                                <div className="info">
-                                    <span className="rating">{show.vote_average > 0 ? `${show.vote_average}`: 'NR'} <Star /></span>
-                                    &bull;
-                                    <span className="air-date">{show.first_air_date.substr(0, 4)}</span>
+            <div>
+                {this.state.loading === false ? 
+                <div id="tv-shows">
+                    <h1>Popular TV SHOWS</h1>
+                    <Divider  variant="middle" />
+                    <div className="container">
+                        {tvShows.map((show, index) => {
+                            return (
+                                <div className="show" key={index}>
+                                    <h4>{show.name}</h4>
+                                    <img onClick={this.chooseShow} data-id={show.id} src={`${POSTER_URL}${show.poster_path}`} alt={show.name} />
+                                    <div className="info">
+                                        <span className="rating">{show.vote_average > 0 ? `${show.vote_average}`: 'NR'} <Star /></span>
+                                        &bull;
+                                        <span className="air-date">{show.first_air_date.substr(0, 4)}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                            )
+                        })}
+                    </div>
+                </div> : <div className="loading-element shows"><h1>Loading TV Shows</h1></div>}
             </div>
         )
     }

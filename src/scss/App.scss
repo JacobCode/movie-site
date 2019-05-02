@@ -10,6 +10,22 @@ hr {
     background: rgba(0, 0, 0, 0.12) !important;
 }
 
+.loading-element {
+    min-height: 80vh;
+    background-image: url('../images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+        color: $purple;
+        transform: translateY(-5rem);
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+}
+
 * {
     font-family: $default;
 }
