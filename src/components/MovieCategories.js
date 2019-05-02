@@ -142,7 +142,7 @@ class MovieCategories extends Component {
                             })}
                         </div>
                     </div>
-                </div> : <div className="loading-element categories"><h1>Loading Movies</h1></div>}
+                </div> : <div className="loading-element categories"><h1>Loading Categories</h1></div>}
             </div>
         )
     }

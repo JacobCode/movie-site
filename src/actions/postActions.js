@@ -18,10 +18,12 @@ import {
 
 import axios from 'axios';
 
+// API info
 const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
 const API_URL = 'https://api.themoviedb.org/3';
 
 export const searchMovies = (query) => dispatch => {
+  // Replace spaces with %20 in url
   const querySearch = String(query).replace(/\s/g, '%20');
   axios.get(`${API_URL}/search/movie?${API_KEY}&language=en-US&query=${querySearch}&page=1&include_adult=false`)
     .then((response) => {
@@ -33,6 +35,7 @@ export const searchMovies = (query) => dispatch => {
 }
 
 export const getFutureMovies = () => dispatch => {
+  // Get current date for future movies
   var d = new Date();
   var currentDate = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
   axios.get(`${API_URL}/discover/movie?primary_release_date.gte=${currentDate}&primary_release_date.lte=${currentDate}&${API_KEY}&language=en-US`)
@@ -115,6 +118,7 @@ export const getGenres = () => dispatch => {
 }
 
 export const getImdbData = (imdb_id) => dispatch => {
+  // OMDB API
   const imdb_key = 'apikey=5d02e9db';
   const imdb_url = 'https://www.omdbapi.com';
   axios.get(`${imdb_url}/?i=${imdb_id}&${imdb_key}`)
@@ -135,6 +139,7 @@ export const getImages = (images) => dispatch => {
 
 export const getActors = (actors) => dispatch => {
   if (actors.length > 1 && actors !== undefined) {
+    // The MovieDB Person API
     const actor_url = 'https://api.themoviedb.org/3/search/person?';
     const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
     const actorImages = [];
