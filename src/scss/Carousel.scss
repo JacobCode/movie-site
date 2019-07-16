@@ -49,7 +49,6 @@
                     }
                 }
                 .text {
-                    max-width: 800px;
                     padding: 1.5rem;
                     font-family: $default;
                     color: $darkGrey;
@@ -128,7 +127,17 @@
 
 @media screen and (max-width: 768px) {
     #stepper {
-        display: none !important;
+		button {
+			span {
+				font-size: 0.75rem;
+			}
+		}
+		div {
+			div {
+				height: 6px;
+				width: 6px;
+			}
+		}
     }
     #carousel {
         h1 {

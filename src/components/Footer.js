@@ -27,7 +27,7 @@ class Footer extends Component {
                     <div className="col contact">
                         <h6>Contact</h6>
                         <ul>
-                            <li>Portfolio: <a href="https://jacobcode.github.io/portfolio/">Jacob Carver</a></li>
+                            <li>Portfolio: <a href="https://jacobcarver.net">Jacob Carver</a></li>
                             <li>GitHub: <a href="https://github.com/JacobCode">JacobCode</a></li>
                         </ul>
                     </div>
