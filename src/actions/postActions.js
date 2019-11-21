@@ -19,7 +19,7 @@ import {
 import axios from 'axios';
 
 // API info
-const API_KEY = 'api_key=b74e9e633dbb1ff6742cdbedaa08687d';
+const API_KEY = `api_key=${key}`;
 const API_URL = 'https://api.themoviedb.org/3';
 
 export const searchMovies = (query) => dispatch => {
